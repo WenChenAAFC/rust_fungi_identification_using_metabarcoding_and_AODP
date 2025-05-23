@@ -1,0 +1,43 @@
+---
+title: "Introduction"
+format: html
+bibliography: bibtexlib.bib
+---
+
+#### 2025-06-5
+
+## Workshop organizing committee
+
+#### Lead workshop organiser, preparation of workshop material and website
+
+-   [Wen Chen](https://profils-profiles.science.gc.ca/en/profile/dr-wen-chen?wbdisable=true) - [wen.chen\@agr.gc.ca](mailto:wen.chen@agr.gc.ca), [wchen\@uottawa.ca](mailto:wchen@uottawa.ca)
+
+#### Instructors
+
+-   [Samuel Holden](https://apps.ualberta.ca/directory/person/sholden1) [sholden1\@ualberta.ca](mailto:sholden1@ualberta.ca)
+-   [David Kim](https://www.goc411.ca/en/386636/David-Kim) [david.kim2\@agr.gc.ca](mailto:david.kim2@agr.gc.ca)
+-   [Sean Formby](https://scholar.google.ca/citations?user=myuq82AAAAAJ&hl=en) [sean.formby\@gmail.com](mailto:sean.formby@gmail.com); [sean.formby\@gmail.com](mailto:ean.formby@gmail.com)
+
+#### Scientific advisors
+
+-   [Guus Bakkeren](https://profils-profiles.science.gc.ca/en/profile/guus-bakkeren-phd) [guus.bakkeren\@AGR.GC.CA](mailto:guus.bakkeren@agr.gc.ca);
+-   [Sean Li](https://profils-profiles.science.gc.ca/en/profile/li-xiang-sean) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca){.email};
+-   [Gurcharn Brar](https://apps.ualberta.ca/directory/person/gurcharn) [gurcharn\@ualberta.ca](mailto:urcharn@ualberta.ca)
+
+## Diagnostic Metagenomics in Plant Pathology
+
+Working with any plant-associated microbe comes with the inherent challenge that no environment is sterile, and a plant’s metabiome is teeming with life. When collecting field samples outside of the laboratory, the issue is compounded further. In this era of big data and easy access to high throughput sequencing, it is increasingly common for scientists to work with large sequence datasets which must first be evaluated for quality and potential contaminating reads. Sequence data files from environmental samples often contain genetic material from organisms not targeted by the experimental design. Understanding how to identify species from NGS sequencing data, or from targeted sequencing such as ITS spacers while properly accounting for common sources of error and bias is a valuable skill which can be of use to researchers who are beginning a new metagenomic project, or who are mid-way through analysing large and targeted datasets
+
+This workshop provides hands-on trainings on in silico approaches for identifying and classifying samples from sequencing data, drawing on experience with rust fungus-infected cereal samples collected from fields. However, the concepts we intend to explore in the workshop are broadly applicable so they can be tailored to specific species of interest.
+
+## Introduction to AODP
+
+The Automated Oligonucleotide Design Pipeline (AODP) [@RN3722] is an open-source software designed to identify "signature oligonucleotides" from a reference sequence dataset . These are defined as subsequences that exclusively and perfectly match a specific group of sequences. The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment [@RN2855]. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions [@RN286]. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below, especially relevant with the f.spp of rusts.
+
+Step-by-step tutorial can also be found in [@RN5352]
+
+## Special Notification
+
+This workshop is intended for participants already familiar with command-line tools and Linux operating systems. It is not suitable for beginners seeking basic Linux training. Participants should bring their own laptops equipped with a Linux virtual machine installed via VirtualBox or with access to a Linux-based HPC server. Instructors will provide detailed instructions to all registrants on setting up the necessary working environment, which must be completed prior to attending the workshop.
+
+## References

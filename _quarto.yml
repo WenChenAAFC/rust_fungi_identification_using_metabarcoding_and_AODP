@@ -1,0 +1,56 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - 0_setup.qmd
+    - 1_data.qmd
+    - 2_aodp.qmd
+    - 3_rust.qmd
+
+website:
+  navbar:
+    title: |
+      Identification of Rust Fungal Species Using Metabarcoding and AODP<br>
+      <span class="navbar-subtitle">
+        <img src="images/cps-logo.png" alt="CPS logo" class="cps-logo">
+        <img src="images/ICRPMC2025-wheat-logo.png" alt="ICRPMC2025-wheat logo" class="ICRPMC2025-wheat-logo">
+      </span><br>
+    pinned: true
+    right:
+    - text: Workshop Content
+      menu:
+        - href: index.qmd
+          text: Introduction
+        - href: 0_setup.qmd
+          text: Environment Setup
+        - href: 1_data.qmd
+          text: The Dataset
+        - href: 2_aodp.qmd
+          text: AODP for Classification
+        - href: 3_rust.qmd
+          text: Validation & Visulization
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+      - flatly
+    code-fold: false
+    code-overflow: wrap
+    code-tools:
+      toggle: false      # hides the `</> Code` button
+      source: false      # prevents source code toggle
+    highlight-style: github
+    css: tutorial.css
+    toc: true # enable local TOC
+    toc-location: left # place toc to the left (default is on the right)
+    toc_float: false # force it into the left column
+    #  collapsed: false
+    toc_depth: 2
+    includes:
+      before_body: header.html
+
+editor: visual
+
+

@@ -1,0 +1,200 @@
+---
+title: "Required Components"
+format: html
+bibliography: bibtexlib.bib
+---
+
+::: custom-header-title
+Identification of Rust Fungal Species through Metabarcoding and AODP
+:::
+
+## 💻 Operating System
+
+You should use a laptop with **Linux** operational system for this workshop.\
+*Windows users should install a Linux virtual machine via [VirtualBox](https://www.virtualbox.org/) or use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).*
+
+------------------------------------------------------------------------
+
+## 🐍 Conda or Mamba Setup
+
+We will use **Conda** (or **Mamba**)[^1] to manage software environments.
+
+[^1]: Mamba is a reimplementation of Conda in C++ for speed and faster environment handling.
+
+-   Recommended: [Mambaforge](https://github.com/conda-forge/miniforge#mambaforge){target="_blank"}
+-   Alternative: [Miniconda](https://docs.conda.io/en/latest/miniconda.html){target="_blank"}
+
+#### ✅ Test your installation:
+
+::: {.callout-note title="BASH Block"}
+```{bash, eval=FALSE}
+which conda
+conda --version
+
+which mamba
+mamba --version
+
+# If these return paths like /opt/conda/bin/conda or /Users/yourname/mambaforge/bin/mamba, you're good to go.
+
+# To set mamba as the default (for its performance)
+# add this to your ~/.bashrc
+# export PATH="/Users/chenw/mambaforge/bin:$PATH"
+# source ~/.bashrc
+```
+:::
+
+------------------------------------------------------------------------
+
+## 🔧 Git Installation
+
+**Git** is a version control system used to track changes and collaborate on data projects, including scripts, data, figures, and documents.
+
+📌 [Install Git](http://happygitwithr.com/install-git.html){target="_blank"} for your operating system.
+
+::: {.callout-note title="BASH Block"}
+```{bash, eval=FALSE, results='hide'}
+
+# 1. clone the github repository
+git clone https://github.com/WenChenAAFC/rust_fungi_identification_using_metabarcoding_and_AODP.git
+
+# 2. switch to the working directory
+cd rust_fungi_identification_using_metabarcoding_and_AODP
+
+# 3. get the path of the working directory
+wkdir=`pwd` # NO space
+echo $wkdir
+ls -lah
+
+# 4. Examine the folder structure;
+tree -d # only show directories
+tree -d -n # -n disables color output
+```
+:::
+
+------------------------------------------------------------------------
+
+## ⚙️ Installing AODP with dependencies and other tools 
+
+::: {.callout-note title="BASH Block"}
+```{bash, eval=FALSE, results='hide'}
+
+# 1. make sure you are in the working directory
+echo $wkdir
+cd $wkdir
+
+# 2. Create an aodp-training conda environment using the yaml file
+mamba env create -n aodp-training -f aodp_env.yml
+
+# 3. check the compiler
+which c++
+c++ --version # c++ (conda-forge gcc 10.4.0-19) 10.4.0
+
+# 4. list installed perl packages and their versions
+conda list perl-bioperl
+perl -MBio::Seq -e 'print "Bioperl is working\n";'
+
+# 5. check other software installed, e.g. ITSx (latest verison 1.1.3) [@RN5060]
+# [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)
+which ITSx
+ITSx --help
+
+# 6. activate aodp environment
+conda activate aodp-training
+
+# 7. Switch to aodp folder
+cd aodp_v2.0_release
+
+# 8. Extract and enter AODP folder
+tar xvzf aodp-2.5.s0.1.tar.gz
+cd aodp-2.5.0.1
+
+#------------------------------
+# 9. Install AODP locally
+# Install AODP by following the instruction in "INSTALL" file.
+#------------------------------
+
+aodpDIR=`pwd`
+echo $aodpDIR
+
+# set up where to install aodp and man page
+./configure BIN_TARGET_DIR=$aodpDIR \
+            MAN_TARGET_DIR=$aodpDIR/man
+make
+make install
+
+# Temporally add aodp to PATH
+export PATH="$PATH:$aodpDIR";
+
+# to permanently add aodp to PATH,
+# add above line to your ~/.bashrc 
+# e.g. add "export PATH="$PATH:/gpfs/fs7/aafc/labs/chenw_lab/workspace/chenw/RustIDing_using_metabarcoding_and_AODP/aodp_v2.0_release/aodp-2.5.0.1"
+# source ~/.bashrc
+
+# 10. Test installation
+which aodp
+aodp --help
+
+# To deactivate environment
+# conda deactivate
+```
+:::
+
+## 🧬 Review refDBs and accessory scripts
+
+::: {.callout-note title="BASH Block"}
+```{bash, eval=FALSE}
+
+cd $wkdir
+
+# The Rust ITS2 Database 
+ls -lah refDBs 
+# find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]
+
+cd $wkdir
+ls -lah scripts  
+# find aodp_taxonomy.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
+```
+:::
+
+## 📊 R and RStudio Setup
+
+1.  Install R and RStudio
+
+-   [R](http://www.r-project.org){target="_blank"}
+-   [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/){target="_blank"}
+
+2.  Installing the required R packages
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE}
+
+# 1. CRAN packages
+required_cran <- c("dplyr", "tidyr", "tibble", "openxlsx",
+                   "splitstackshape","ggplot2", "ggbreak", 
+                   "purrr", "stringr", "phangorn", "ape")
+if (!requireNamespace(required_cran, quietly = TRUE)) {
+  install.packages(required_cran, repos = "http://cran.rstudio.com", dependencies = TRUE)
+}
+
+# 2. Bioconda packages:
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+required_bioc <- c("phyloseq", "cowplot", "ggtree", "Biostrings",
+                   "treeio")
+if (!requireNamespace(required_bioc, quietly = TRUE)) {
+  BiocManager::install(required_bioc)
+}
+
+# 3. other R packages
+if (!requireNamespace("devtools", quietly=TRUE))
+    install.packages("devtools")
+devtools::install_github("YuLab-SMU/ggmsa")
+packageVersion("ggmsa")
+
+# 4. Check your R session
+sessionInfo() # This command will tell you information about your current R session
+
+```
+:::
