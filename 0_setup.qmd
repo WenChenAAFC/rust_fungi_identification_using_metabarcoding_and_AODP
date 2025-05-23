@@ -85,33 +85,45 @@ cd $wkdir
 # 2. Create an aodp-training conda environment using the yaml file
 mamba env create -n aodp-training -f aodp_env.yml
 
-# 3. check the compiler
+# 3. activate aodp environment
+conda activate aodp-training
+
+# 4. check the compiler
 which c++
 c++ --version # c++ (conda-forge gcc 10.4.0-19) 10.4.0
 
-# 4. list installed perl packages and their versions
-conda list perl-bioperl
+#------------------------------
+# 5. Verify you’re using the env’s perl:
+#------------------------------
+which perl
+# → /home/kimd/miniforge3/envs/aodp-training/bin/perl
+
+# Test Bioperl:
 perl -MBio::Seq -e 'print "Bioperl is working\n";'
 
-# 5. check other software installed, e.g. ITSx (latest verison 1.1.3) [@RN5060]
-# [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)
-which ITSx
-ITSx --help
+# If you still see “Can’t locate Bio/Seq.pm in @INC”, force-prepend the env’s bin:
+export PATH="$CONDA_PREFIX/bin:$PATH"
+hash -r   # clear bash’s command cache
 
-# 6. activate aodp environment
-conda activate aodp-training
+# Re-check and re-test:
+which perl
+# → should now again be $CONDA_PREFIX/bin/perl
+perl -MBio::Seq -e 'print "Bioperl is working\n";'
 
-# 7. Switch to aodp folder
-cd aodp_v2.0_release
-
-# 8. Extract and enter AODP folder
-tar xvzf aodp-2.5.s0.1.tar.gz
-cd aodp-2.5.0.1
+# list installed perl packages and their versions
+conda list perl-bioperl
 
 #------------------------------
-# 9. Install AODP locally
+# 6. Install AODP locally
 # Install AODP by following the instruction in "INSTALL" file.
 #------------------------------
+
+# Switch to aodp folder
+cd aodp_v2.0_release
+
+# Extract and enter AODP folder
+tar xvzf aodp-2.5.s0.1.tar.gz
+cd aodp-2.5.0.1
 
 aodpDIR=`pwd`
 echo $aodpDIR
@@ -130,12 +142,20 @@ export PATH="$PATH:$aodpDIR";
 # e.g. add "export PATH="$PATH:/gpfs/fs7/aafc/labs/chenw_lab/workspace/chenw/RustIDing_using_metabarcoding_and_AODP/aodp_v2.0_release/aodp-2.5.0.1"
 # source ~/.bashrc
 
-# 10. Test installation
+# Test installation
 which aodp
 aodp --help
 
+#------------------------------
+# 7. check other software installed, 
+#------------------------------
+# [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)
+which ITSx
+ITSx --help
+
 # To deactivate environment
-# conda deactivate
+conda deactivate
+
 ```
 :::
 
