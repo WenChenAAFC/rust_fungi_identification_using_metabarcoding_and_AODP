@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#conda-or-mamba-setup" id="toc-conda-or-mamba-setup" class="nav-link" data-scroll-target="#conda-or-mamba-setup">🐍 Conda or Mamba Setup</a></li>
   <li><a href="#git-installation" id="toc-git-installation" class="nav-link" data-scroll-target="#git-installation">🔧 Git Installation</a></li>
   <li><a href="#installing-aodp-with-dependencies-and-other-tools" id="toc-installing-aodp-with-dependencies-and-other-tools" class="nav-link" data-scroll-target="#installing-aodp-with-dependencies-and-other-tools">⚙️ Installing AODP with dependencies and other tools</a></li>
-  <li><a href="#review-refdbs-and-accessory-scripts" id="toc-review-refdbs-and-accessory-scripts" class="nav-link" data-scroll-target="#review-refdbs-and-accessory-scripts">🧬 Review refDBs and accessory scripts</a></li>
+  <li><a href="#review-other-data-folders-and-accessory-scripts" id="toc-review-other-data-folders-and-accessory-scripts" class="nav-link" data-scroll-target="#review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</a></li>
   <li><a href="#r-and-rstudio-setup" id="toc-r-and-rstudio-setup" class="nav-link" data-scroll-target="#r-and-rstudio-setup">📊 R and RStudio Setup</a></li>
   </ul>
 </nav>
@@ -319,11 +319,11 @@ BASH Block
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">--yes</span></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. (Optional) Add ITSx</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-n</span> aodp-training2 <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda itsx <span class="at">--yes</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">-n</span> aodp-training <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda itsx <span class="at">--yes</span></span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> itsx</span>
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Activate and verify</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate aodp-training2</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate aodp-training</span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 5a. Check Perl</span></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> perl</span>
@@ -374,8 +374,8 @@ BASH Block
 </div>
 </div>
 </section>
-<section id="review-refdbs-and-accessory-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="review-refdbs-and-accessory-scripts">🧬 Review refDBs and accessory scripts</h2>
+<section id="review-other-data-folders-and-accessory-scripts" class="level2">
+<h2 class="anchored" data-anchor-id="review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -390,13 +390,16 @@ BASH Block
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$wkdir</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$wkdir</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The Rust ITS2 Database </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$wkdir</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. QIIME2 outputs</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> qiime2.outputs_and_metadata</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The Rust ITS2 Database </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Additional R functions</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
