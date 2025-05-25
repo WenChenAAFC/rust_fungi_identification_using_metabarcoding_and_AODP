@@ -29,9 +29,7 @@
 
 using namespace std;
 
-// class TrieSlice;
-#include "TrieSlice.h"  // or the actual file where TrieSlice is fully defined
-
+class TrieSlice;
 
 template<typename T> ostream& operator<< ( ostream& o, const vector<T>& v ) {
 	for( const T& e : v ) {

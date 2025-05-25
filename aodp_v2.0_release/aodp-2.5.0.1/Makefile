@@ -12,9 +12,9 @@ CXX=g++
 
 CXXFLAGS= -std=c++11
 
-PERL=/Users/chenw/mambaforge/bin/perl
+PERL=/usr/bin/perl
 
-HAS_BISON_2_7=no
+HAS_BISON_2_7=yes
 HAS_FLEX_2_5=yes
 
 # If you want to run flex/bison, make sure they are in your path
@@ -22,8 +22,8 @@ BISON=/usr/bin/bison
 FLEX=/usr/bin/flex
 
 # target (installation) directories
-BIN_TARGET_DIR=/Users/chenw/Documents/ubuntu_64bit_shared/0_CPS/0_Virtual_Workshop_Committee/2025-2026/RustIDing_using_metabarcoding_and_AODP/aodp/aodp-2.5.0.1
-MAN_TARGET_DIR=/Users/chenw/Documents/ubuntu_64bit_shared/0_CPS/0_Virtual_Workshop_Committee/2025-2026/RustIDing_using_metabarcoding_and_AODP/aodp/aodp-2.5.0.1/man
+BIN_TARGET_DIR=/usr/local/bin
+MAN_TARGET_DIR=/usr/share/man/man1
 
 #-------------------------------------------
 #	make variables
