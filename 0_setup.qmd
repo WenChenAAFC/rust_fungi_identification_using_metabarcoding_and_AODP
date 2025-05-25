@@ -8,6 +8,8 @@ bibliography: bibtexlib.bib
 Identification of Rust Fungal Species through Metabarcoding and AODP
 :::
 
+[ YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP. ]{style="color:red; font-weight:bold;"}
+
 ## 💻 Operating System
 
 You should use a laptop with **Linux** operational system for this workshop.\
@@ -73,65 +75,63 @@ tree -d -n # -n disables color output
 
 ------------------------------------------------------------------------
 
-## ⚙️ Installing AODP with dependencies and other tools 
+## ⚙️ Installing AODP with dependencies and other tools
 
 ::: {.callout-note title="BASH Block"}
 ```{bash, eval=FALSE, results='hide'}
 
-# 1. make sure you are in the working directory
+# Check your working directory, should be PATH_to_rust_fungi_identification_using_metabarcoding_and_AODP
 echo $wkdir
 cd $wkdir
 
-# 2. Create an aodp-training conda environment using the yaml file
-mamba env create -n aodp-training -f aodp_env.yml
+# 1. (Optional) Reinstall mamba if it’s misbehaving
+# conda activate base
+# conda remove mamba --yes
+# conda clean --all --yes
+# conda install -c conda-forge mamba --yes
 
-# 3. activate aodp environment
-conda activate aodp-training
+# 2. (Optional) Remove any old training env, for example:
+# mamba env remove -n aodp-training --yes
 
-# 4. check the compiler
-which c++
-c++ --version # c++ (conda-forge gcc 10.4.0-19) 10.4.0
+# 3. Create a fresh aodp-training env with the core dependencies
+mamba create -n aodp-training -c conda-forge -c bioconda \
+  gcc_linux-64=10.4.0 \
+  gxx_linux-64=10.4.0 \
+  make \
+  perl \
+  perl-bioperl \
+  blast \
+  --yes
 
-#------------------------------
-# 5. Verify you’re using the env’s perl:
-#------------------------------
+# 4. (Optional) Add ITSx
+mamba install -n aodp-training2 -c conda-forge -c bioconda itsx --yes
+which itsx
+
+# 5. Activate and verify
+conda activate aodp-training2
+
+# 5a. Check Perl
 which perl
-# → /home/kimd/miniforge3/envs/aodp-training/bin/perl
-
-# Test Bioperl:
-perl -MBio::Seq -e 'print "Bioperl is working\n";'
-
-# If you still see “Can’t locate Bio/Seq.pm in @INC”, force-prepend the env’s bin:
-export PATH="$CONDA_PREFIX/bin:$PATH"
-hash -r   # clear bash’s command cache
-
-# Re-check and re-test:
-which perl
-# → should now again be $CONDA_PREFIX/bin/perl
-perl -MBio::Seq -e 'print "Bioperl is working\n";'
-
-# list installed perl packages and their versions
+perl -MBio::Seq -e 'print "Bioperl is working\n";' \
+  || { 
+       export PATH="$CONDA_PREFIX/bin:$PATH"; 
+       hash -r; 
+       which perl; 
+       perl -MBio::Seq -e 'print "Bioperl is working\n";' 
+     }
 conda list perl-bioperl
 
-#------------------------------
-# 6. Install AODP locally
-# Install AODP by following the instruction in "INSTALL" file.
-#------------------------------
-
-# Switch to aodp folder
+# 6. Build & install AODP
 cd aodp_v2.0_release
-
-# Extract and enter AODP folder
-tar xvzf aodp-2.5.s0.1.tar.gz
+tar xvzf aodp-2.5.0.1.tar.gz
 cd aodp-2.5.0.1
 
-aodpDIR=`pwd`
-echo $aodpDIR
+export CXXFLAGS="-std=c++11"
+./configure \
+  BIN_TARGET_DIR="$PWD" \
+  MAN_TARGET_DIR="$PWD/man"
 
-# set up where to install aodp and man page
-./configure BIN_TARGET_DIR=$aodpDIR \
-            MAN_TARGET_DIR=$aodpDIR/man
-make
+make clean && make
 make install
 
 # Temporally add aodp to PATH
@@ -147,7 +147,7 @@ which aodp
 aodp --help
 
 #------------------------------
-# 7. check other software installed, 
+# 7. (Optonal) check other software installed, 
 #------------------------------
 # [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)
 which ITSx
@@ -163,7 +163,7 @@ conda deactivate
 
 ::: {.callout-note title="BASH Block"}
 ```{bash, eval=FALSE}
-
+echo $wkdir
 cd $wkdir
 
 # The Rust ITS2 Database 
@@ -172,7 +172,7 @@ ls -lah refDBs
 
 cd $wkdir
 ls -lah scripts  
-# find aodp_taxonomy.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
+# find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
 ```
 :::
 
@@ -189,9 +189,18 @@ ls -lah scripts
 ```{r, eval = TRUE}
 
 # 1. CRAN packages
-required_cran <- c("dplyr", "tidyr", "tibble", "openxlsx",
-                   "splitstackshape","ggplot2", "ggbreak", 
-                   "purrr", "stringr", "phangorn", "ape")
+required_cran <- c("openxlsx", # Read, write, and edit Microsoft Excel file
+                   "dplyr", # data manipulation: filter, select, mutate, summarize, join, etc.
+                   "tidyr", # turning “messy” data into tidy data frames.
+                   "stringr", # simple wrappers for string operations (pattern matching, replacement, etc.).
+                   "tibble",  # Modern reimagining of data.frame: better printing, stricter checks, etc
+                   "splitstackshape", # Stack and reshape datasets after splitting concatenated values
+                   "purrr", # Functional-programming tools for working with lists/vectors.
+                   "ggplot2", # creating graphics, based on “The Grammar of Graphics.
+                   "cowplot", # Extensions to ggplot2 for arranging multiple plots and adding annotations.
+                   "ape", # Analyses of phylogenetics and evolution: tree manipulation, plotting, etc
+                   "phangorn" # Phylogenetic inference and evolutionary analyses
+                   )
 if (!requireNamespace(required_cran, quietly = TRUE)) {
   install.packages(required_cran, repos = "http://cran.rstudio.com", dependencies = TRUE)
 }
@@ -201,17 +210,25 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
   install.packages("BiocManager")
 }
 
-required_bioc <- c("phyloseq", "cowplot", "ggtree", "Biostrings",
-                   "treeio")
+required_bioc <- c("phyloseq", # Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).
+                    "Biostrings", # Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).
+                   "ggtree", # Grammar-of-graphics plotting and annotation of phylogenetic trees.
+                   "msa", # Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.
+                   "ggmsa", # Alignment visualization in a ggplot2-style (sequence and tree insets).
+                   "treeio" # Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).
+                   )
 if (!requireNamespace(required_bioc, quietly = TRUE)) {
   BiocManager::install(required_bioc)
 }
 
-# 3. other R packages
-if (!requireNamespace("devtools", quietly=TRUE))
-    install.packages("devtools")
+# 3. Alternatively, # 3. Install ggmsa from GitHub via devtools
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
 devtools::install_github("YuLab-SMU/ggmsa")
-packageVersion("ggmsa")
+
+# Verify installation
+packageVersion("ggmsa") 
 
 # 4. Check your R session
 sessionInfo() # This command will tell you information about your current R session
