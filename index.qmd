@@ -40,4 +40,6 @@ Step-by-step tutorial can also be found in [@RN5352]
 
 This workshop is intended for participants already familiar with command-line tools and Linux operating systems. It is not suitable for beginners seeking basic Linux training. Participants should bring their own laptops equipped with a Linux virtual machine installed via VirtualBox or with access to a Linux-based HPC server. Instructors will provide detailed instructions to all registrants on setting up the necessary working environment, which must be completed prior to attending the workshop.
 
+[ YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP. ]{style="color:red; font-weight:bold;"}
+
 ## References
