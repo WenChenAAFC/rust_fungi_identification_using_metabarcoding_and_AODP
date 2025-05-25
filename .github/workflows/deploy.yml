@@ -1,14 +1,22 @@
-name: Render & Deploy Quarto site
+name: Push docs to main
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main    # or whatever branch holds your source
 
 jobs:
-  build-deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: quarto-dev/quarto-actions/setup@v2
-      - run: quarto publish gh-pages --branch gh-pages --force
 
+      - name: Commit built docs/
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "📦 update docs/" || echo "nothing to commit"
+
+      - name: Push to main
+        run: git push origin main
