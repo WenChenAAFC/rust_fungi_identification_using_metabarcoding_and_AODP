@@ -1,5 +1,5 @@
 ---
-title: "Cereal Rust Dynamics in Western Canada"
+title: "Validation & Visualization"
 format: html
 bibliography: bibtexlib.bib
 ---
