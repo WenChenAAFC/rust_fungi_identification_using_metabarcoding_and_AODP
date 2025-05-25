@@ -1,0 +1,14 @@
+name: Render & Deploy Quarto site
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto publish gh-pages --branch gh-pages --force
+
