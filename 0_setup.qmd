@@ -104,11 +104,11 @@ mamba create -n aodp-training -c conda-forge -c bioconda \
   --yes
 
 # 4. (Optional) Add ITSx
-mamba install -n aodp-training2 -c conda-forge -c bioconda itsx --yes
+mamba install -n aodp-training -c conda-forge -c bioconda itsx --yes
 which itsx
 
 # 5. Activate and verify
-conda activate aodp-training2
+conda activate aodp-training
 
 # 5a. Check Perl
 which perl
@@ -159,18 +159,21 @@ conda deactivate
 ```
 :::
 
-## 🧬 Review refDBs and accessory scripts
+## 🧬 Review other data folders and accessory scripts
 
 ::: {.callout-note title="BASH Block"}
 ```{bash, eval=FALSE}
 echo $wkdir
 cd $wkdir
 
-# The Rust ITS2 Database 
+# 1. QIIME2 outputs
+ls -lah qiime2.outputs_and_metadata
+
+# 2. The Rust ITS2 Database 
 ls -lah refDBs 
 # find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]
 
-cd $wkdir
+# 3. Additional R functions
 ls -lah scripts  
 # find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
 ```
