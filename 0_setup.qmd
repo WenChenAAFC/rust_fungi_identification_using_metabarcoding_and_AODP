@@ -54,7 +54,7 @@ mamba --version
 📌 [Install Git](http://happygitwithr.com/install-git.html){target="_blank"} for your operating system.
 
 ::: {.callout-note title="BASH Block"}
-```{bash, eval=FALSE, results='hide'}
+```{bash clone-git-repo, eval=FALSE, results='hide'}
 
 # 1. clone the github repository
 git clone https://github.com/WenChenAAFC/rust_fungi_identification_using_metabarcoding_and_AODP.git
@@ -78,7 +78,7 @@ tree -d -n # -n disables color output
 ## ⚙️ Installing AODP with dependencies and other tools
 
 ::: {.callout-note title="BASH Block"}
-```{bash, eval=FALSE, results='hide'}
+```{bash install-aodp-in-conda-env, eval=FALSE, results='hide'}
 
 # Check your working directory, should be PATH_to_rust_fungi_identification_using_metabarcoding_and_AODP
 echo $wkdir
@@ -162,9 +162,7 @@ conda deactivate
 ## 🧬 Review other data folders and accessory scripts
 
 ::: {.callout-note title="BASH Block"}
-```{bash, eval=FALSE}
-echo $wkdir
-cd $wkdir
+```{bash project-folder, eval=TRUE}
 
 # 1. QIIME2 outputs
 ls -lah qiime2.outputs_and_metadata
@@ -189,7 +187,7 @@ ls -lah scripts
 2.  Installing the required R packages
 
 ::: {.callout-note title="R Block"}
-```{r, eval = TRUE}
+```{r install-packages, eval = TRUE}
 
 # 1. CRAN packages
 required_cran <- c("openxlsx", # Read, write, and edit Microsoft Excel file
