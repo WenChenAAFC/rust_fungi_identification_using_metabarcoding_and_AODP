@@ -387,19 +387,38 @@ BASH Block
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$wkdir</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$wkdir</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. QIIME2 outputs</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> qiime2.outputs_and_metadata</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The Rust ITS2 Database </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Additional R functions</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. QIIME2 outputs</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> qiime2.outputs_and_metadata</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The Rust ITS2 Database </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Additional R functions</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>total 24320
+drwxr-xr-x@  8 chenw  staff   256B May 25 19:10 .
+drwxr-xr-x+ 31 chenw  staff   992B May 25 20:15 ..
+-rw-rw-r--@  1 chenw  staff   6.0K May 23 12:23 .DS_Store
+-rw-rw-r--@  1 chenw  staff   6.4M Apr  6 03:26 feature-table.tsv
+-rw-rw-r--@  1 chenw  staff    24K May 23 10:14 meta.xlsx
+-rw-rw-r--@  1 chenw  staff   3.1M Mar 14  2022 rep-seqs_ITS2.fasta
+-rw-rw-r--@  1 chenw  staff   1.7M May  2 17:02 taxonomy.tsv
+-rw-rw-r--@  1 chenw  staff   675K Apr  6 03:37 tree_rooted.nwk
+total 1304
+drwxr-xr-x@  4 chenw  staff   128B May 22 09:40 .
+drwxr-xr-x+ 31 chenw  staff   992B May 25 20:15 ..
+-rw-rw-r--@  1 chenw  staff   370K May  2 14:18 CR-ITS2-refDB.align.fasta
+-rw-rw-r--@  1 chenw  staff   279K May  2 14:17 CR-ITS2-refDB.fasta
+total 24
+drwxr-xr-x@  4 chenw  staff   128B May 23 09:28 .
+drwxr-xr-x+ 31 chenw  staff   992B May 25 20:15 ..
+-rw-r--r--@  1 chenw  staff   6.0K May 23 09:26 .DS_Store
+-rw-rw-r--@  1 chenw  staff   1.1K May 23 09:28 functions.R</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -427,44 +446,44 @@ R Block
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CRAN packages</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>required_cran <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"openxlsx"</span>, <span class="co"># Read, write, and edit Microsoft Excel file</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"dplyr"</span>, <span class="co"># data manipulation: filter, select, mutate, summarize, join, etc.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tidyr"</span>, <span class="co"># turning “messy” data into tidy data frames.</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"stringr"</span>, <span class="co"># simple wrappers for string operations (pattern matching, replacement, etc.).</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tibble"</span>,  <span class="co"># Modern reimagining of data.frame: better printing, stricter checks, etc</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"splitstackshape"</span>, <span class="co"># Stack and reshape datasets after splitting concatenated values</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"purrr"</span>, <span class="co"># Functional-programming tools for working with lists/vectors.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggplot2"</span>, <span class="co"># creating graphics, based on “The Grammar of Graphics.</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cowplot"</span>, <span class="co"># Extensions to ggplot2 for arranging multiple plots and adding annotations.</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ape"</span>, <span class="co"># Analyses of phylogenetics and evolution: tree manipulation, plotting, etc</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"phangorn"</span> <span class="co"># Phylogenetic inference and evolutionary analyses</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_cran, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(required_cran, <span class="at">repos =</span> <span class="st">"http://cran.rstudio.com"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, # 3. Install ggmsa from GitHub via devtools</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CRAN packages</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>required_cran <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"openxlsx"</span>, <span class="co"># Read, write, and edit Microsoft Excel file</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"dplyr"</span>, <span class="co"># data manipulation: filter, select, mutate, summarize, join, etc.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tidyr"</span>, <span class="co"># turning “messy” data into tidy data frames.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"stringr"</span>, <span class="co"># simple wrappers for string operations (pattern matching, replacement, etc.).</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tibble"</span>,  <span class="co"># Modern reimagining of data.frame: better printing, stricter checks, etc</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"splitstackshape"</span>, <span class="co"># Stack and reshape datasets after splitting concatenated values</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"purrr"</span>, <span class="co"># Functional-programming tools for working with lists/vectors.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggplot2"</span>, <span class="co"># creating graphics, based on “The Grammar of Graphics.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cowplot"</span>, <span class="co"># Extensions to ggplot2 for arranging multiple plots and adding annotations.</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ape"</span>, <span class="co"># Analyses of phylogenetics and evolution: tree manipulation, plotting, etc</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"phangorn"</span> <span class="co"># Phylogenetic inference and evolutionary analyses</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_cran, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(required_cran, <span class="at">repos =</span> <span class="st">"http://cran.rstudio.com"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, # 3. Install ggmsa from GitHub via devtools</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Using GitHub PAT from the git credential store.</code></pre>
 </div>
@@ -472,13 +491,13 @@ R Block
 <pre><code>Skipping install of 'ggmsa' from a github remote, the SHA1 (b90d4b9f) has not changed since last install.
   Use `force = TRUE` to force installation</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.13.1'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Check your R session</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>() <span class="co"># This command will tell you information about your current R session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Check your R session</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>() <span class="co"># This command will tell you information about your current R session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.3 (2025-02-28)
 Platform: x86_64-apple-darwin20
