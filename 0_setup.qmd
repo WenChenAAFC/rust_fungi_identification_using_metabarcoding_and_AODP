@@ -36,12 +36,25 @@ conda --version
 which mamba
 mamba --version
 
-# If these return paths like /opt/conda/bin/conda or /Users/yourname/mambaforge/bin/mamba, you're good to go.
+#-------------------
+# If your shell hasn’t been properly initialized for Mamba to manage environments like conda activate does.
+# do the following steps:
+#-------------------
+# 1. obtain mamba base environment: 
+mamba info
+# from the output, find "base environment : /gpfs/fs7/aafc/labs/chenw_lab/code/software/mambaforge"
+
+# 2. run the following command ONCE, replace the path to your own mamba base environment
+# mamba shell init --shell bash --root-prefix=/gpfs/fs7/aafc/labs/chenw_lab/code/software/mambaforge
+
+# 3. Then restart your terminal or run:
+# source ~/.bashrc 
 
 # To set mamba as the default (for its performance)
 # add this to your ~/.bashrc
-# export PATH="/Users/chenw/mambaforge/bin:$PATH"
+# export PATH="/gpfs/fs7/aafc/labs/chenw_lab/code/software/mambaforge/bin:$PATH"
 # source ~/.bashrc
+
 ```
 :::
 
@@ -68,8 +81,12 @@ echo $wkdir
 ls -lah
 
 # 4. Examine the folder structure;
-tree -d # only show directories
-tree -d -n # -n disables color output
+# if you do not have tree command in the system
+find . -type d | sed -e 's/[^-][^\/]*\//|   /g' -e 's/| *\([^|]\)/+-- \1/'
+# Lists all directories (find . -type d)
+# Replaces each /-based level with indentation (| )
+# Marks the final directory component with a +-- to mimic the tree command.
+
 ```
 :::
 
@@ -108,7 +125,7 @@ mamba install -n aodp-training -c conda-forge -c bioconda itsx --yes
 which ITSx
 
 # 5. Activate and verify
-conda activate aodp-training
+mamba activate aodp-training
 
 # 5a. Check Perl
 which perl
@@ -119,7 +136,7 @@ perl -MBio::Seq -e 'print "Bioperl is working\n";' \
        which perl; 
        perl -MBio::Seq -e 'print "Bioperl is working\n";' 
      }
-conda list perl-bioperl
+mamba list perl-bioperl
 
 # 6. Build & install AODP
 cd aodp_v2.0_release
@@ -154,7 +171,7 @@ which ITSx
 ITSx --help
 
 # To deactivate environment
-conda deactivate
+mamba deactivate
 
 ```
 :::
