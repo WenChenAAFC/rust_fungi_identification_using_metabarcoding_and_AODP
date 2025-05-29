@@ -97,7 +97,7 @@ find . -type d | sed -e 's/[^-][^\/]*\//|   /g' -e 's/| *\([^|]\)/+-- \1/'
 ::: bashblock
 ```{bash install-aodp-in-conda-env, eval=FALSE, results='hide'}
 
-# Check your working directory, should be PATH_to_rust_fungi_identification_using_metabarcoding_and_AODP
+# Check your working directory, should be PATH_TO/rust_fungi_identification_using_metabarcoding_and_AODP
 echo $wkdir
 cd $wkdir
 
@@ -225,6 +225,8 @@ if (!requireNamespace(required_cran, quietly = TRUE)) {
 
 ```
 
+
+
 ```{r install-bioc, eval = TRUE}
 
 # 2. Bioconda packages:
@@ -244,6 +246,8 @@ if (!requireNamespace(required_bioc, quietly = TRUE)) {
 }
 
 ```
+
+
 
 ```{r install-dev, eval = TRUE}
 
