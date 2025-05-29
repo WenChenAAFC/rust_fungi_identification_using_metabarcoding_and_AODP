@@ -8,7 +8,7 @@ bibliography: bibtexlib.bib
 Identification of Rust Fungal Species through Metabarcoding and AODP
 :::
 
-[YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.]{style="color:red; font-weight:bold;"}
+[**YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.**]{style="background-color:yellow; font-weight:bold;"}
 
 ## 💻 Operating System
 
@@ -28,7 +28,7 @@ We will use **Conda** (or **Mamba**)[^1] to manage software environments.
 
 #### ✅ Test your installation:
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash, eval=FALSE}
 which conda
 conda --version
@@ -66,7 +66,7 @@ mamba info
 
 📌 [Install Git](http://happygitwithr.com/install-git.html){target="_blank"} for your operating system.
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash clone-git-repo, eval=FALSE, results='hide'}
 
 # 1. clone the github repository
@@ -94,7 +94,7 @@ find . -type d | sed -e 's/[^-][^\/]*\//|   /g' -e 's/| *\([^|]\)/+-- \1/'
 
 ## ⚙️ Installing AODP with dependencies and other tools
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash install-aodp-in-conda-env, eval=FALSE, results='hide'}
 
 # Check your working directory, should be PATH_to_rust_fungi_identification_using_metabarcoding_and_AODP
@@ -178,7 +178,7 @@ mamba deactivate
 
 ## 🧬 Review other data folders and accessory scripts
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash project-folder, eval=TRUE}
 
 # 1. QIIME2 outputs
@@ -203,8 +203,8 @@ ls -lah scripts
 
 2.  Installing the required R packages
 
-::: {.callout-note title="R Block"}
-```{r install-packages, eval = TRUE}
+::: rblock
+```{r install-cran, eval = TRUE}
 
 # 1. CRAN packages
 required_cran <- c("openxlsx", # Read, write, and edit Microsoft Excel file
@@ -223,6 +223,10 @@ if (!requireNamespace(required_cran, quietly = TRUE)) {
   install.packages(required_cran, repos = "http://cran.rstudio.com", dependencies = TRUE)
 }
 
+```
+
+```{r install-bioc, eval = TRUE}
+
 # 2. Bioconda packages:
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
   install.packages("BiocManager")
@@ -238,6 +242,10 @@ required_bioc <- c("phyloseq", # Import, store, analyze and graph microbiome cen
 if (!requireNamespace(required_bioc, quietly = TRUE)) {
   BiocManager::install(required_bioc)
 }
+
+```
+
+```{r install-dev, eval = TRUE}
 
 # 3. Alternatively, # 3. Install ggmsa from GitHub via devtools
 if (!requireNamespace("devtools", quietly = TRUE)) {

@@ -99,6 +99,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+div.callout-rblock.callout {
+  border-left-color: #228B22;
+}
+div.callout-rblock.callout-style-default > .callout-header {
+  background-color: rgba(34, 139, 34, 0.13);
+}
+div.callout-rblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblock.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+div.callout-bashblock.callout {
+  border-left-color: #00008B;
+}
+div.callout-bashblock.callout-style-default > .callout-header {
+  background-color: rgba(0, 0, 139, 0.13);
+}
+div.callout-bashblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-bashblock.callout-style-default .callout-icon::before, div.callout-bashblock.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+</style>
 
 
 <link rel="stylesheet" href="tutorial.css">
@@ -205,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="custom-header-title">
 <p>Identification of Rust Fungal Species through Metabarcoding and AODP</p>
 </div>
-<p><span style="color:red; font-weight:bold;">YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.</span></p>
+<p><span style="background-color:yellow; font-weight:bold;"><strong>YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.</strong></span></p>
 <section id="operating-system" class="level2">
 <h2 class="anchored" data-anchor-id="operating-system">💻 Operating System</h2>
 <p>You should use a laptop with <strong>Linux</strong> operational system for this workshop.<br>
@@ -221,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="test-your-installation" class="level4">
 <h4 class="anchored" data-anchor-id="test-your-installation">✅ Test your installation:</h4>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -266,7 +290,7 @@ BASH Block
 <h2 class="anchored" data-anchor-id="git-installation">🔧 Git Installation</h2>
 <p><strong>Git</strong> is a version control system used to track changes and collaborate on data projects, including scripts, data, figures, and documents.</p>
 <p>📌 <a href="http://happygitwithr.com/install-git.html" target="_blank">Install Git</a> for your operating system.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -302,7 +326,7 @@ BASH Block
 </section>
 <section id="installing-aodp-with-dependencies-and-other-tools" class="level2">
 <h2 class="anchored" data-anchor-id="installing-aodp-with-dependencies-and-other-tools">⚙️ Installing AODP with dependencies and other tools</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -395,7 +419,7 @@ BASH Block
 </section>
 <section id="review-other-data-folders-and-accessory-scripts" class="level2">
 <h2 class="anchored" data-anchor-id="review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -420,7 +444,7 @@ BASH Block
 <div class="cell-output cell-output-stdout">
 <pre><code>total 24320
 drwxr-xr-x@  8 chenw  staff   256B May 25 19:10 .
-drwxr-xr-x@ 33 chenw  staff   1.0K May 29 00:21 ..
+drwxr-xr-x@ 34 chenw  staff   1.1K May 29 12:27 ..
 -rw-rw-r--@  1 chenw  staff   6.0K May 23 12:23 .DS_Store
 -rw-rw-r--@  1 chenw  staff   6.4M Apr  6 03:26 feature-table.tsv
 -rw-rw-r--@  1 chenw  staff    24K May 23 10:14 meta.xlsx
@@ -429,12 +453,12 @@ drwxr-xr-x@ 33 chenw  staff   1.0K May 29 00:21 ..
 -rw-rw-r--@  1 chenw  staff   675K Apr  6 03:37 tree_rooted.nwk
 total 1304
 drwxr-xr-x@  4 chenw  staff   128B May 22 09:40 .
-drwxr-xr-x@ 33 chenw  staff   1.0K May 29 00:21 ..
+drwxr-xr-x@ 34 chenw  staff   1.1K May 29 12:27 ..
 -rw-rw-r--@  1 chenw  staff   370K May  2 14:18 CR-ITS2-refDB.align.fasta
 -rw-rw-r--@  1 chenw  staff   279K May  2 14:17 CR-ITS2-refDB.fasta
 total 24
 drwxr-xr-x@  4 chenw  staff   128B May 23 09:28 .
-drwxr-xr-x@ 33 chenw  staff   1.0K May 29 00:21 ..
+drwxr-xr-x@ 34 chenw  staff   1.1K May 29 12:27 ..
 -rw-r--r--@  1 chenw  staff   6.0K May 23 09:26 .DS_Store
 -rw-rw-r--@  1 chenw  staff   1.1K May 23 09:28 functions.R</code></pre>
 </div>
@@ -454,7 +478,7 @@ drwxr-xr-x@ 33 chenw  staff   1.0K May 29 00:21 ..
 <ol start="2" type="1">
 <li>Installing the required R packages</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -480,29 +504,31 @@ R Block
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                   )</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_cran, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(required_cran, <span class="at">repos =</span> <span class="st">"http://cran.rstudio.com"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, # 3. Install ggmsa from GitHub via devtools</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, # 3. Install ggmsa from GitHub via devtools</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Using GitHub PAT from the git credential store.</code></pre>
 </div>
@@ -510,13 +536,13 @@ R Block
 <pre><code>Skipping install of 'ggmsa' from a github remote, the SHA1 (b90d4b9f) has not changed since last install.
   Use `force = TRUE` to force installation</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.13.1'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Check your R session</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>() <span class="co"># This command will tell you information about your current R session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Check your R session</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>() <span class="co"># This command will tell you information about your current R session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.3 (2025-02-28)
 Platform: x86_64-apple-darwin20

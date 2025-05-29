@@ -119,6 +119,30 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<style>
+div.callout-rblock.callout {
+  border-left-color: #228B22;
+}
+div.callout-rblock.callout-style-default > .callout-header {
+  background-color: rgba(34, 139, 34, 0.13);
+}
+div.callout-rblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblock.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+div.callout-bashblock.callout {
+  border-left-color: #00008B;
+}
+div.callout-bashblock.callout-style-default > .callout-header {
+  background-color: rgba(0, 0, 139, 0.13);
+}
+div.callout-bashblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-bashblock.callout-style-default .callout-icon::before, div.callout-bashblock.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+</style>
 
 
 <link rel="stylesheet" href="tutorial.css">
@@ -247,7 +271,7 @@ Figure&nbsp;1: Puccinia pathways and air-sampling sites in western Canada.
 <section id="wet-lab-prcoessing-and-sequncing-data-handling" class="level2">
 <h2 class="anchored" data-anchor-id="wet-lab-prcoessing-and-sequncing-data-handling">Wet-lab prcoessing and sequncing data handling</h2>
 <p>Genomic DNA from the trapped spores (<a href="#fig-lab" class="quarto-xref">Figure&nbsp;2</a>) was extracted using a DNeasy PowerSoil DNA extraction kit (Qiagen) and a MP FastPrep-24 bead beater instrument (BioMedical). The ITS2 region was amplified using a <strong>rust-enhanced</strong> primer pair <strong>Rust2inv (5′-GAT GAA GAA CAC AGT GAA A-3′)</strong> and <strong>ITS4var_H (5′- TCC TCY GCT TAT TGA TAT GC-3′)</strong>. The PCR products were sent to the Génome Québec Innovation Centre (Montréal, QC, Canada) for paired end PE300 sequencing using the Illumina MiSeq platform.</p>
-<p>The raw sequencing data were processed using the <a href="https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html">DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)</a> bioinformatics suite <span class="citation" data-cites="RN2890">(<a href="#ref-RN2890" role="doc-biblioref">Estaki et al. 2020</a>)</span>, which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by <a href="https://microbiology.se/software/itsx/">ITSx</a> <span class="citation" data-cites="RN5060">(<a href="#ref-RN5060" role="doc-biblioref">Bengtsson-Palme et al. 2013</a>)</span>.</p>
+<p>The raw sequencing data were processed using the <a href="https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html">DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)</a> bioinformatics suite <span class="citation" data-cites="RN2890 RN3396">(<a href="#ref-RN2890" role="doc-biblioref">Estaki et al. 2020</a>; <a href="#ref-RN3396" role="doc-biblioref">Callahan et al. 2016</a>)</span>, which allowed us to generate an Amplicon Sequence Variant (ASV) table. Alternatively, you can also run the <a href="https://benjjneb.github.io/dada2/"><strong>DATA2 pipeline in the R environment</strong></a>. The ITS2 region of the representative sequences of the ASVs were extracted by <a href="https://microbiology.se/software/itsx/">ITSx</a> <span class="citation" data-cites="RN5060">(<a href="#ref-RN5060" role="doc-biblioref">Bengtsson-Palme et al. 2013</a>)</span>.</p>
 <p>While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal genus level, we used <strong>AODP</strong> to improve the <strong>species/subpecies-level</strong> resolution within cereal rust fungi by integrating a curated taxonomic references (CR-ITS2-refDB) and leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.</p>
 <div id="fig-lab" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -264,7 +288,7 @@ Figure&nbsp;2: Air samples collected by Burkard cyclone sampler.
 <h2 class="anchored" data-anchor-id="prepare-data-for-aodp">Prepare data for AODP</h2>
 <section id="import-qiime2-outputs" class="level3">
 <h3 class="anchored" data-anchor-id="import-qiime2-outputs">Import QIIME2 outputs</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -421,7 +445,7 @@ Rooted; includes branch length(s).</code></pre>
 </section>
 <section id="import-metadata" class="level3">
 <h3 class="anchored" data-anchor-id="import-metadata">Import metadata</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -455,7 +479,7 @@ Ag.2015.38 2015     AG 2015-09-18     9          38</code></pre>
 </section>
 <section id="create-phyloseq-object" class="level2">
 <h2 class="anchored" data-anchor-id="create-phyloseq-object">Create phyloseq object</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -490,7 +514,7 @@ refseq()      DNAStringSet:      [ 11645 reference sequences ]</code></pre>
 </section>
 <section id="subset-the-rust-fungal-community" class="level2">
 <h2 class="anchored" data-anchor-id="subset-the-rust-fungal-community">Subset the rust fungal community</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -551,7 +575,7 @@ ce65fe6eeeb329fafee9e548f1723502 "Puccinia_tanaceti"
 </section>
 <section id="export-representative-sequences-of-rust-fungi" class="level2">
 <h2 class="anchored" data-anchor-id="export-representative-sequences-of-rust-fungi">Export representative sequences of rust fungi</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -589,6 +613,9 @@ Bengtsson-Palme, Johan, Martin Ryberg, Martin Hartmann, Sara Branco, Zheng Wang,
 </div>
 <div id="ref-RN5094" class="csl-entry" role="listitem">
 Brar, Gurcharn S., Thomas Fetch, Brent D. McCallum, Pierre J. Hucl, and Hadley R. Kutcher. 2019. <span>“Virulence Dynamics and Breeding for Resistance to Stripe, Stem, and Leaf Rust in Canada Since 2000.”</span> Journal Article. <em>Plant Disease</em> 103 (12): 2981–95. https://doi.org/<a href="https://doi.org/10.1094/pdis-04-19-0866-fe">https://doi.org/10.1094/pdis-04-19-0866-fe</a>.
+</div>
+<div id="ref-RN3396" class="csl-entry" role="listitem">
+Callahan, Benjamin J., Paul J. McMurdie, Michael J. Rosen, Andrew W. Han, Amy Jo A. Johnson, and Susan P. Holmes. 2016. <span>“DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.”</span> Journal Article. <em>Nature Methods</em> 13 (7): 581–83. <a href="https://doi.org/10.1038/nmeth.3869">https://doi.org/10.1038/nmeth.3869</a>.
 </div>
 <div id="ref-RN5164" class="csl-entry" role="listitem">
 Chen, Wen, Nathaniel Newlands, Sarah Hambleton, André Laroche, Seyyed Mohammadreza Davoodi, and Guus Bakkeren. 2024. <span>“Optimizing an Integrated Biovigilance Toolbox to Study the Spatial Distribution and Dynamic Changes of Airborne Mycobiota, with a Focus on Cereal Rust Fungi in Western Canada.”</span> Journal Article. <em>Molecular Ecology Resources</em> n/a (n/a): e13983. https://doi.org/<a href="https://doi.org/10.1111/1755-0998.13983">https://doi.org/10.1111/1755-0998.13983</a>.

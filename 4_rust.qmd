@@ -11,7 +11,7 @@ Phylogenetic validation and seasonal trends of cereal rust fungi
 
 ## Load R packages quietly
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval=TRUE, message=FALSE, warning=FALSE}
 
 # 1. Load packages quietly ----------------------------------------------------
@@ -40,7 +40,7 @@ packageVersion("ggmsa")
 
 ## Validating AODP classification via phylogenetic tree reconstruction
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r validation, eval=TRUE, message=FALSE, warning=FALSE}
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -166,7 +166,7 @@ ggsave(
 
 ## Seasonal dynamics of cereal rust species in BC during 2015-2018
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r seasonal‐dynamics, message=FALSE, warning=FALSE}
 
 # 1. === Define your target rust species & nicer labels ===

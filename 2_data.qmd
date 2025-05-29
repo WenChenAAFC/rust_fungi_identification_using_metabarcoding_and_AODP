@@ -21,7 +21,7 @@ The sequencing data used for this workshop were generated from airborne spore sa
 
 Genomic DNA from the trapped spores (@fig-lab) was extracted using a DNeasy PowerSoil DNA extraction kit (Qiagen) and a MP FastPrep-24 bead beater instrument (BioMedical). The ITS2 region was amplified using a **rust-enhanced** primer pair **Rust2inv (5′-GAT GAA GAA CAC AGT GAA A-3′)** and **ITS4var_H (5′- TCC TCY GCT TAT TGA TAT GC-3′)**. The PCR products were sent to the Génome Québec Innovation Centre (Montréal, QC, Canada) for paired end PE300 sequencing using the Illumina MiSeq platform.
 
-The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890], which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060]. 
+The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890; @RN3396], which allowed us to generate an Amplicon Sequence Variant (ASV) table. Alternatively, you can also run the [**DATA2 pipeline in the R environment**](https://benjjneb.github.io/dada2/). The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060]. 
 
 While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal genus level, we used **AODP** to improve the **species/subpecies-level** resolution within cereal rust fungi by integrating a curated taxonomic references (CR-ITS2-refDB) and leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
 
@@ -31,7 +31,7 @@ While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 rea
 
 ### Import QIIME2 outputs
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval = TRUE, echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
 # load libraries
 library(dplyr)
@@ -117,7 +117,7 @@ color_dna(rep_filtered, n = 5)
 
 ### Import metadata
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval = TRUE}
 # load metadata
 meta <- openxlsx::read.xlsx("qiime2.outputs_and_metadata/meta.xlsx", rowNames = TRUE)
@@ -128,7 +128,7 @@ dim(meta)
 
 ## Create phyloseq object
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval = TRUE}
 # create phyloseq object
 ps_ASV <- otu_table(asv, taxa_are_rows = TRUE)
@@ -147,7 +147,7 @@ saveRDS(ps, "output/phyloseq_all.rds")
 
 ## Subset the rust fungal community
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval = TRUE}
 ps <- readRDS("output/phyloseq_all.rds")
 
@@ -168,7 +168,7 @@ saveRDS(ps.rust, "output/phyloseq_rust.rds")
 
 ## Export representative sequences of rust fungi
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r, eval = TRUE}
 # keep sequences longer than 100 bp
 rep.rust <- refseq(ps.rust) %>%

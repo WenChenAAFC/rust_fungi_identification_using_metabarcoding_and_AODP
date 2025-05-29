@@ -11,7 +11,7 @@ Step-by-step instructions for activating your environment, running AODP, and int
 
 ## Activate conda environment
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash active-conda, eval = FALSE}
 
 # 1. (Optional) SSH into your remote server
@@ -41,7 +41,7 @@ aodp --help
 
 To runAODP, prepare a high-quality refDB in UNITE General Release format, here we use CR-ITS2-refDB.fasta in the refDBs folder. We will use "Pucciniales_asv.fasta" you have just created, which includes the representative sequences of all Pucciniales ASVs from the current study.
 
-::: {.callout-note title="BASH Block"}
+::: bashblock
 ```{bash run-aodp, eval=FALSE}
 
 # Single oligo-size run
@@ -88,7 +88,7 @@ Previously, we have demonstrated that the best precision and recall were achieve
 
 ![Precision and recall of aodp matching algorithm for classifying mycotoxin-producing fungi.](images/aodp.precision.recall.png){#fig-precision}
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r aodp-taxonomy, eval=TRUE, message=FALSE, warning=FALSE}
 
 # 0) Load required libraries ------------------------------------------------
@@ -205,7 +205,7 @@ head(aodp_final$removed, 5)
 
 ## Modify phyloseq object by replace the species level classification based on AODP
 
-::: {.callout-note title="R Block"}
+::: rblock
 ```{r integrate-aodp-taxonomy, eval=TRUE, message=FALSE, warning=FALSE}
 
 # 1) Load libraries ---------------------------------------------------------

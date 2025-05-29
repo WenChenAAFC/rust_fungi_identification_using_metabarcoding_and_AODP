@@ -99,6 +99,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+div.callout-rblock.callout {
+  border-left-color: #228B22;
+}
+div.callout-rblock.callout-style-default > .callout-header {
+  background-color: rgba(34, 139, 34, 0.13);
+}
+div.callout-rblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblock.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+div.callout-bashblock.callout {
+  border-left-color: #00008B;
+}
+div.callout-bashblock.callout-style-default > .callout-header {
+  background-color: rgba(0, 0, 139, 0.13);
+}
+div.callout-bashblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-bashblock.callout-style-default .callout-icon::before, div.callout-bashblock.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+</style>
 
 
 <link rel="stylesheet" href="tutorial.css">
@@ -205,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="activate-conda-environment" class="level2">
 <h2 class="anchored" data-anchor-id="activate-conda-environment">Activate conda environment</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -243,7 +267,7 @@ BASH Block
 <section id="run-aodp" class="level2">
 <h2 class="anchored" data-anchor-id="run-aodp">Run AODP</h2>
 <p>To runAODP, prepare a high-quality refDB in UNITE General Release format, here we use CR-ITS2-refDB.fasta in the refDBs folder. We will use “Pucciniales_asv.fasta” you have just created, which includes the representative sequences of all Pucciniales ASVs from the current study.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="BASH Block">
+<div class="callout callout-style-default callout-bashblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -306,7 +330,7 @@ Figure&nbsp;1: Precision and recall of aodp matching algorithm for classifying m
 </figcaption>
 </figure>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -448,7 +472,7 @@ R Block
 </section>
 <section id="modify-phyloseq-object-by-replace-the-species-level-classification-based-on-aodp" class="level2">
 <h2 class="anchored" data-anchor-id="modify-phyloseq-object-by-replace-the-species-level-classification-based-on-aodp">Modify phyloseq object by replace the species level classification based on AODP</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

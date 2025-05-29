@@ -64,7 +64,23 @@ format:
     toc_depth: 2
     includes:
       before_body: header.html
-      
+
+filters:
+  - custom-callout
+  
+# Define custom callouts here
+custom-callout:
+  bashblock:
+    title: "BASH Block"
+    icon-symbol: "💻"
+    color: "#00008B"
+  rblock:
+    title: "R Block"
+    icon-symbol: "📊"
+    color: "#228B22"
+
+
+
 bibliography: bibtexlib.bib
 
 editor: visual

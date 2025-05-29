@@ -99,6 +99,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+div.callout-bashblock.callout {
+  border-left-color: #00008B;
+}
+div.callout-bashblock.callout-style-default > .callout-header {
+  background-color: rgba(0, 0, 139, 0.13);
+}
+div.callout-bashblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-bashblock.callout-style-default .callout-icon::before, div.callout-bashblock.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+div.callout-rblock.callout {
+  border-left-color: #228B22;
+}
+div.callout-rblock.callout-style-default > .callout-header {
+  background-color: rgba(34, 139, 34, 0.13);
+}
+div.callout-rblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblock.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+</style>
 
 
 <link rel="stylesheet" href="tutorial.css">
@@ -204,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="load-r-packages-quietly" class="level2">
 <h2 class="anchored" data-anchor-id="load-r-packages-quietly">Load R packages quietly</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -247,7 +271,7 @@ R Block
 </section>
 <section id="validating-aodp-classification-via-phylogenetic-tree-reconstruction" class="level2">
 <h2 class="anchored" data-anchor-id="validating-aodp-classification-via-phylogenetic-tree-reconstruction">Validating AODP classification via phylogenetic tree reconstruction</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -393,7 +417,7 @@ R Block
 </section>
 <section id="seasonal-dynamics-of-cereal-rust-species-in-bc-during-2015-2018" class="level2">
 <h2 class="anchored" data-anchor-id="seasonal-dynamics-of-cereal-rust-species-in-bc-during-2015-2018">Seasonal dynamics of cereal rust species in BC during 2015-2018</h2>
-<div class="callout callout-style-default callout-note callout-titled" title="R Block">
+<div class="callout callout-style-default callout-rblock callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

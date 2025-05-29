@@ -227,3 +227,44 @@ figure {
   margin-bottom: 4rem !important;
   display: table; /* may help clarify spacing */
 }
+
+
+/*------------------------------------------------------------
+🏷️ Customize the BASH and R blockss
+------------------------------------------------------------*/
+
+/* Remove the thick left bar on callouts */
+div.callout {
+  border-left: none !important;
+  box-shadow: none !important;
+  padding-left: 1rem !important;
+}
+
+/* Optional: soften callout border or background */
+div.callout-note {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* Remove left border specifically on source code blocks inside callouts */
+.callout pre.sourceCode {
+  border-left: none !important;
+}
+
+/* 🔵 Light blue background for code inside BASH callouts */
+.bashblock .sourceCode {
+  background-color: #eaf4fc !important;
+  border-radius: 6px;
+  padding: 1rem;
+  border: none;
+}
+
+/* 🟢 Light green background for code inside R callouts */
+.rblock .sourceCode {
+  background-color: #edf9f0 !important;
+  border-radius: 6px;
+  padding: 1rem;
+  border: none;
+}

@@ -85,6 +85,30 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<style>
+div.callout-bashblock.callout {
+  border-left-color: #00008B;
+}
+div.callout-bashblock.callout-style-default > .callout-header {
+  background-color: rgba(0, 0, 139, 0.13);
+}
+div.callout-bashblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-bashblock.callout-style-default .callout-icon::before, div.callout-bashblock.callout-titled .callout-icon::before {
+  content: '💻';
+  background-image: none;
+}
+div.callout-rblock.callout {
+  border-left-color: #228B22;
+}
+div.callout-rblock.callout-style-default > .callout-header {
+  background-color: rgba(34, 139, 34, 0.13);
+}
+div.callout-rblock .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblock.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+</style>
 
 
 <link rel="stylesheet" href="tutorial.css">
@@ -153,7 +177,10 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#workshop-organizing-committee" id="toc-workshop-organizing-committee" class="nav-link active" data-scroll-target="#workshop-organizing-committee">Workshop organizing committee</a></li>
+  <li><a href="#workshop-organizing-committee" id="toc-workshop-organizing-committee" class="nav-link active" data-scroll-target="#workshop-organizing-committee">Workshop organizing committee</a>
+  <ul class="collapse">
+  <li><a href="#scientific-advisors" id="toc-scientific-advisors" class="nav-link" data-scroll-target="#scientific-advisors">Scientific advisors</a></li>
+  </ul></li>
   <li><a href="#special-notification" id="toc-special-notification" class="nav-link" data-scroll-target="#special-notification">Special Notification</a></li>
   <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading">Recommended reading</a></li>
   </ul>
@@ -205,8 +232,8 @@ div.csl-indent {
 <li><a href="https://scholar.google.ca/citations?user=myuq82AAAAAJ&amp;hl=en">Sean Formby</a> <a href="mailto:sean.formby@gmail.com">sean.formby@gmail.com</a>; <a href="mailto:ean.formby@gmail.com">sean.formby@gmail.com</a></li>
 </ul>
 </section>
-<section id="scientific-advisors" class="level4">
-<h4 class="anchored" data-anchor-id="scientific-advisors">Scientific advisors</h4>
+<section id="scientific-advisors" class="level3">
+<h3 class="anchored" data-anchor-id="scientific-advisors">Scientific advisors</h3>
 <ul>
 <li><a href="https://profils-profiles.science.gc.ca/en/profile/guus-bakkeren-phd">Guus Bakkeren</a> <a href="mailto:guus.bakkeren@agr.gc.ca">guus.bakkeren@AGR.GC.CA</a>;</li>
 <li><a href="https://profils-profiles.science.gc.ca/en/profile/li-xiang-sean">Sean Li</a> <a href="mailto:sean.li@inspection.gc.ca">sean.li@inspection.gc.ca</a> <a href="mailto:sean.li@inspection.gc.ca" class="email">sean.li@inspection.gc.ca</a>;</li>
@@ -216,9 +243,8 @@ div.csl-indent {
 </section>
 <section id="special-notification" class="level2">
 <h2 class="anchored" data-anchor-id="special-notification">Special Notification</h2>
-<p>This workshop offers hands-on training in in silico methods for the identification and classification of organisms from sequencing data, with a focus on rust fungus-infected cereal samples collected from the field. While examples will be drawn from cereal rust fungi, the underlying concepts and workflows are broadly applicable and can be adapted to other target species of interest.</p>
-<p>The workshop is designed for participants who are already comfortable using command-line tools and the Linux operating system. It is not intended for beginners seeking introductory Linux training. Participants are expected to bring their own laptops with either a Linux virtual machine (installed via VirtualBox) or access to a Linux-based high-performance computing (HPC) server. Detailed setup instructions will be provided to all registrants in advance, and the required computing environment must be prepared prior to the workshop.</p>
-<p><span style="color:red; font-weight:bold;">YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.</span></p>
+<p>This workshop provides hands-on training in bioinformatic approaches for accurate identification and classification of phytopathogens at the species or subspecies level using metabarcoding short reads from environmental samples. While the case study focuses on cereal rust fungi detected in air samples, the concepts and workflows presented are broadly applicable and can be adapted to other pathogens and sample types.</p>
+<p>The workshop is intended for participants with prior experience using command-line tools and the Linux operating system. It is not suitable for those seeking an introduction to Linux. Participants must bring their own laptops equipped with either a Linux virtual machine (e.g., via VirtualBox) or remote access to a Linux-based high-performance computing (HPC) server. Detailed setup instructions are provided in the <span style="background-color:yellow; font-weight:bold;"><strong>Environment Setup</strong></span> section, and <span style="background-color:yellow; font-weight:bold;"><strong>all required software and environments must be installed before the workshop begins.</strong></span></p>
 </section>
 <section id="recommended-reading" class="level2">
 
@@ -228,11 +254,23 @@ div.csl-indent {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Recommended reading</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-RN4509" class="csl-entry" role="listitem">
+Aboukhaddour, Reem, Thomas Fetch, Brent D. McCallum, Michael W. Harding, Brian L. Beres, and Robert J. Graf. 2020. <span>“Wheat Diseases on the Prairies: A Canadian Story.”</span> Journal Article. <em>Plant Pathology</em> 69 (3): 418–32. https://doi.org/<a href="https://doi.org/10.1111/ppa.13147">https://doi.org/10.1111/ppa.13147</a>.
+</div>
+<div id="ref-RN5094" class="csl-entry" role="listitem">
+Brar, Gurcharn S., Thomas Fetch, Brent D. McCallum, Pierre J. Hucl, and Hadley R. Kutcher. 2019. <span>“Virulence Dynamics and Breeding for Resistance to Stripe, Stem, and Leaf Rust in Canada Since 2000.”</span> Journal Article. <em>Plant Disease</em> 103 (12): 2981–95. https://doi.org/<a href="https://doi.org/10.1094/pdis-04-19-0866-fe">https://doi.org/10.1094/pdis-04-19-0866-fe</a>.
+</div>
+<div id="ref-RN3396" class="csl-entry" role="listitem">
+Callahan, Benjamin J., Paul J. McMurdie, Michael J. Rosen, Andrew W. Han, Amy Jo A. Johnson, and Susan P. Holmes. 2016. <span>“DADA2: High-Resolution Sample Inference from Illumina Amplicon Data.”</span> Journal Article. <em>Nature Methods</em> 13 (7): 581–83. <a href="https://doi.org/10.1038/nmeth.3869">https://doi.org/10.1038/nmeth.3869</a>.
+</div>
 <div id="ref-RN5164" class="csl-entry" role="listitem">
 Chen, Wen, Nathaniel Newlands, Sarah Hambleton, André Laroche, Seyyed Mohammadreza Davoodi, and Guus Bakkeren. 2024. <span>“Optimizing an Integrated Biovigilance Toolbox to Study the Spatial Distribution and Dynamic Changes of Airborne Mycobiota, with a Focus on Cereal Rust Fungi in Western Canada.”</span> Journal Article. <em>Molecular Ecology Resources</em> n/a (n/a): e13983. https://doi.org/<a href="https://doi.org/10.1111/1755-0998.13983">https://doi.org/10.1111/1755-0998.13983</a>.
 </div>
 <div id="ref-RN3722" class="csl-entry" role="listitem">
 Chen, Wen, Devon Radford, and Sarah Hambleton. 2021. <span>“Towards Improved Detection and Identification of Rust Fungal Pathogens in Environmental Samples Using a Metabarcoding Approach.”</span> Journal Article. <em>Phytopathology</em> 112 (3): 535–48. https://doi.org/<a href="https://doi.org/10.1094/phyto-01-21-0020-r">https://doi.org/10.1094/phyto-01-21-0020-r</a>.
+</div>
+<div id="ref-RN2890" class="csl-entry" role="listitem">
+Estaki, Mehrbod, Lingjing Jiang, Nicholas A. Bokulich, Daniel McDonald, Antonio González, Tomasz Kosciolek, Cameron Martino, et al. 2020. <span>“QIIME 2 Enables Comprehensive End-to-End Analysis of Diverse Microbiome Data and Comparative Studies with Publicly Available Data.”</span> Journal Article. <em>Current Protocols in Bioinformatics</em> 70 (1): e100. https://doi.org/<a href="https://doi.org/10.1002/cpbi.100">https://doi.org/10.1002/cpbi.100</a>.
 </div>
 <div id="ref-RN5352" class="csl-entry" role="listitem">
 Holden, Samuel, Sang Hu Kim, Wen Chen, Xiang Li, Guus Bakkeren, and Gurcharn Brar. 2025. <span>“Identification of Rust Fungi Using High-Throughput Sequencing Data from Environmental Samples.”</span> Book Section. In <em>Wheat Rusts and Resistance Breeding - Methods and Protocol</em>, edited by Gurcharn Brar and Samuel Holden. <a href="https://link.springer.com/book/9781071643778#overview">https://link.springer.com/book/9781071643778#overview</a>.
