@@ -8,19 +8,21 @@ bibliography: bibtexlib.bib
 Identification of Rust Fungal Species through Metabarcoding and AODP
 :::
 
-## Background
+## Cereal rust fungi and field sampling
 
 Cereal rust fungi of the genus *Puccinia* cause significant yield losses in wheat, oat, barley, and rye. The most problematic species for wheat are *P. graminis* f. sp. tritici (stem rust), *P. triticina* (leaf rust), and *P. striiformis* f. sp. tritici (stripe rust). Other species like *P. coronata* and *P. hordei* affect oats and barley. Stem and leaf rust have been largely controlled in western Canada through resistance breeding and fungicides, but stripe rust has resurged due to temperature-adapted strains, leading to substantial yield losses. Rust spores typically travel from the southern U.S. and Mexico via the “Puccinia pathway” to Canada's central and eastern prairies or the “Pacific pathway” to western prairies and the BC [@RN4509; @RN5094].
 
-The sequencing data used for this workshop were generated from airborne spore samples collected across cereal-growing regions in Western Canada as part of an integrated biovigilance framework [@RN5164]. Using short-read metabarcoding of the ITS2 region, the study captured a broad range of fungal taxa with a focus on Pucciniales, the order containing rust fungi. While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal genus level, we introduced the Auomated Oligonucleotide Design Pipeline (AODP) to improve the species/subpecies-level resolution within cereal rust fungi. AODP does so by leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. By integrating a curated taxonomic references with mutation-aware classification, AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
-
-## Field sampling, wet-lab prcoessing, and sequncing data handling
-
-Air samples were collected by Burkard Cyclone spore samplers from three pilot sites in British Columbia during 2015-2018 and five sites in Alberta in 2018, western Canada (@fig-western). Airborne spores were systematically collected each week, spanning from April to November, in British Columbia over four consecutive years, starting in the Spring of 2015 and concluding in the Fall of 2018. Genomic DNA from the trapped spores (@fig-lab) was extracted using a DNeasy PowerSoil DNA extraction kit (Qiagen) and a MP FastPrep-24 bead beater instrument (BioMedical). The ITS2 region was amplified using a **rust-enhanced** primer pair **Rust2inv (5′-GAT GAA GAA CAC AGT GAA A-3′)** and **ITS4var_H (5′- TCC TCY GCT TAT TGA TAT GC-3′)**. The PCR products were sent to the Génome Québec Innovation Centre (Montréal, QC, Canada) for paired end PE300 sequencing using the Illumina MiSeq platform.
-
-The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890], which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060].
+The sequencing data used for this workshop were generated from airborne spore samples collected across cereal-growing regions in Western Canada as part of an integrated biovigilance framework [@RN5164]. Air samples were collected by Burkard Cyclone spore samplers from three pilot sites in British Columbia during 2015-2018 and five sites in Alberta in 2018, western Canada (@fig-western). Airborne spores were systematically collected each week, spanning from April to November.
 
 ![Puccinia pathways and air-sampling sites in western Canada.](images/western.canada.rust.png){#fig-western}
+
+## Wet-lab prcoessing and sequncing data handling
+
+Genomic DNA from the trapped spores (@fig-lab) was extracted using a DNeasy PowerSoil DNA extraction kit (Qiagen) and a MP FastPrep-24 bead beater instrument (BioMedical). The ITS2 region was amplified using a **rust-enhanced** primer pair **Rust2inv (5′-GAT GAA GAA CAC AGT GAA A-3′)** and **ITS4var_H (5′- TCC TCY GCT TAT TGA TAT GC-3′)**. The PCR products were sent to the Génome Québec Innovation Centre (Montréal, QC, Canada) for paired end PE300 sequencing using the Illumina MiSeq platform.
+
+The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890], which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060]. 
+
+While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal **genus** level, we used **AODP** to improve the **species/subpecies-level** resolution within cereal rust fungi by integrating a curated taxonomic references (CR-ITS2-refDB) and leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
 
 ![Air samples collected by Burkard cyclone sampler.](images/air.sample.lab.png){#fig-lab}
 
