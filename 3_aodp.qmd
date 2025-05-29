@@ -5,8 +5,9 @@ bibliography: bibtexlib.bib
 ---
 
 ::: custom-header-title
-Identification of Rust Fungal Species through Metabarcoding and AODP
+Step-by-step instructions for activating your environment, running AODP, and integrating results
 :::
+
 
 ## Activate conda environment
 
@@ -83,7 +84,7 @@ conda deactivate
 
 ## Processing AODP outputs in R to obtain taxonomic classification
 
-Previously, we have demonstrated that the best precision and recall was achieved by oligo-size = 16 (@fig-precision)
+Previously, we have demonstrated that the best precision and recall were achieved by oligo-size = 16 (@fig-precision)
 
 ![Precision and recall of aodp matching algorithm for classifying mycotoxin-producing fungi.](images/aodp.precision.recall.png){#fig-precision}
 

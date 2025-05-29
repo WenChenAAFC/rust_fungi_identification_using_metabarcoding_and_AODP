@@ -5,8 +5,9 @@ bibliography: bibtexlib.bib
 ---
 
 ::: custom-header-title
-Identification of Rust Fungal Species through Metabarcoding and AODP
+Cereal rust fungi in western Canada
 :::
+
 
 ## Cereal rust fungi and field sampling
 
@@ -22,7 +23,7 @@ Genomic DNA from the trapped spores (@fig-lab) was extracted using a DNeasy Powe
 
 The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890], which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060]. 
 
-While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal **genus** level, we used **AODP** to improve the **species/subpecies-level** resolution within cereal rust fungi by integrating a curated taxonomic references (CR-ITS2-refDB) and leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
+While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal genus level, we used **AODP** to improve the **species/subpecies-level** resolution within cereal rust fungi by integrating a curated taxonomic references (CR-ITS2-refDB) and leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
 
 ![Air samples collected by Burkard cyclone sampler.](images/air.sample.lab.png){#fig-lab}
 
