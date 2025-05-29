@@ -8,7 +8,7 @@ bibliography: bibtexlib.bib
 Identification of Rust Fungal Species through Metabarcoding and AODP
 :::
 
-[ YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP. ]{style="color:red; font-weight:bold;"}
+[YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.]{style="color:red; font-weight:bold;"}
 
 ## 💻 Operating System
 

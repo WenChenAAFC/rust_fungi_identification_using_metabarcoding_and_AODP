@@ -1,0 +1,182 @@
+---
+title: "Data used for this workshop"
+format: html
+bibliography: bibtexlib.bib
+---
+
+::: custom-header-title
+Identification of Rust Fungal Species through Metabarcoding and AODP
+:::
+
+## Background
+
+Cereal rust fungi of the genus *Puccinia* cause significant yield losses in wheat, oat, barley, and rye. The most problematic species for wheat are *P. graminis* f. sp. tritici (stem rust), *P. triticina* (leaf rust), and *P. striiformis* f. sp. tritici (stripe rust). Other species like *P. coronata* and *P. hordei* affect oats and barley. Stem and leaf rust have been largely controlled in western Canada through resistance breeding and fungicides, but stripe rust has resurged due to temperature-adapted strains, leading to substantial yield losses. Rust spores typically travel from the southern U.S. and Mexico via the “Puccinia pathway” to Canada's central and eastern prairies or the “Pacific pathway” to western prairies and the BC [@RN4509; @RN5094].
+
+The sequencing data used for this workshop were generated from airborne spore samples collected across cereal-growing regions in Western Canada as part of an integrated biovigilance framework [@RN5164]. Using short-read metabarcoding of the ITS2 region, the study captured a broad range of fungal taxa with a focus on Pucciniales, the order containing rust fungi. While off-the-shelf taxonomic classifiers can reliably assign the short ITS2 reads to the fungal genus level, we introduced the Auomated Oligonucleotide Design Pipeline (AODP) to improve the species/subpecies-level resolution within cereal rust fungi. AODP does so by leveraging high-resolution variant detection within short amplicons, focusing on informative mutations even in highly conserved marker regions. By integrating a curated taxonomic references with mutation-aware classification, AODP significantly improves the detection accuracy of rust fungi in environmental samples, advancing fungal biovigilance and transboundary pathogen surveillance.
+
+## Field sampling, wet-lab prcoessing, and sequncing data handling
+
+Air samples were collected by Burkard Cyclone spore samplers from three pilot sites in British Columbia during 2015-2018 and five sites in Alberta in 2018, western Canada (@fig-western). Airborne spores were systematically collected each week, spanning from April to November, in British Columbia over four consecutive years, starting in the Spring of 2015 and concluding in the Fall of 2018. Genomic DNA from the trapped spores (@fig-lab) was extracted using a DNeasy PowerSoil DNA extraction kit (Qiagen) and a MP FastPrep-24 bead beater instrument (BioMedical). The ITS2 region was amplified using a **rust-enhanced** primer pair **Rust2inv (5′-GAT GAA GAA CAC AGT GAA A-3′)** and **ITS4var_H (5′- TCC TCY GCT TAT TGA TAT GC-3′)**. The PCR products were sent to the Génome Québec Innovation Centre (Montréal, QC, Canada) for paired end PE300 sequencing using the Illumina MiSeq platform.
+
+The raw sequencing data were processed using the [DADA2 Divisive Amplicon Denoising pipeline wrapped in the Quantitative Insights Into Microbial Ecology version 2 (Qiime 2)](https://docs.qiime2.org/jupyterbooks/cancer-microbiome-intervention-tutorial/020-tutorial-upstream/040-denoising.html) bioinformatics suite [@RN2890], which allowed us to generate an Amplicon Sequence Variant (ASV) table. The ITS2 region of the representative sequences of the ASVs were extracted by [ITSx](https://microbiology.se/software/itsx/) [@RN5060].
+
+![Puccinia pathways and air-sampling sites in western Canada.](images/western.canada.rust.png){#fig-western}
+
+![Air samples collected by Burkard cyclone sampler.](images/air.sample.lab.png){#fig-lab}
+
+## Prepare data for AODP
+
+### Import QIIME2 outputs
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE, echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+# load libraries
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(Biostrings)
+library(phyloseq)
+```
+
+```{r, eval = TRUE}
+# import asv file
+asv <- read.table("qiime2.outputs_and_metadata/feature-table.tsv", sep = "\t", header = TRUE, row.names = 1)
+dim(asv) 
+head(names(asv))
+```
+
+```{r, eval = TRUE}
+# import q2 taxonomy 
+tax <- read.table ("qiime2.outputs_and_metadata/taxonomy.tsv", sep = "\t", header = TRUE, row.names = 1) %>%
+  mutate(Taxon=gsub("[dkpcofgs]__", "", Taxon)) %>%
+  separate(
+    col    = Taxon,
+    into   = c("kingdom","phylum","class","order","family","genus","species"),
+    sep    = ";",
+    fill   = "right",    # pad missing pieces on the right with NA
+    remove = TRUE       # remove the original Taxon column 
+  ) %>%
+  select(-Confidence) %>%
+  # replace "unidentified to NA
+  mutate(across(
+    kingdom:species,
+    ~ ifelse(is.na(.) | . == "unidentified", NA, .),  # (optional) re-NA any true missing
+    .names = "{.col}"
+  )) %>%
+  # fix taxonomy to include LCA
+  # now build each rank via coalesce() on the *original* columns
+  mutate(
+    class   = coalesce(class,   paste0(phylum,  "_sp")),
+    order   = coalesce(order,   paste0(class,   "_sp")),
+    family  = coalesce(family,  paste0(order,   "_sp")),
+    genus   = coalesce(genus,   paste0(family,  "_sp")),
+    species = coalesce(species, paste0(genus,   "_sp"))
+  ) %>%
+  mutate(across(
+    kingdom:species,
+    # collapse any run of "_sp" at the end into a single "_sp"
+    function(x) {
+      # collapse any run of "_sp" at the end into a single "_sp"
+      sub("(_sp)+$", "_sp", x)
+    }
+  ))
+
+dim(tax) # 11645     7
+head(tax)
+
+```
+
+```{r, eval = TRUE}
+# load phylogenetic tree
+tree_file <- "qiime2.outputs_and_metadata/tree_rooted.nwk"
+tree <- ape::read.tree(tree_file)
+tree # 15668 tips
+```
+
+```{r, eval = TRUE, results='markup'}
+# load ASV representative sequences
+rep_file <- "qiime2.outputs_and_metadata/rep-seqs_ITS2.fasta"
+rep <- Biostrings::readDNAStringSet(rep_file)
+rep # 15395
+
+# Filter for sequences with width ≥ 100 bp
+rep_filtered <- rep[width(rep) >= 100]
+
+# Check how many are retained
+length(rep_filtered) # 15291
+
+source("./scripts/functions.R")
+
+color_dna(rep_filtered, n = 5)
+
+```
+:::
+
+### Import metadata
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE}
+# load metadata
+meta <- openxlsx::read.xlsx("qiime2.outputs_and_metadata/meta.xlsx", rowNames = TRUE)
+head(meta[, 1:5])
+dim(meta)
+```
+:::
+
+## Create phyloseq object
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE}
+# create phyloseq object
+ps_ASV <- otu_table(asv, taxa_are_rows = TRUE)
+ps_TAX <- tax_table(as.matrix(tax))
+ps_META <- sample_data(meta)
+ps <- phyloseq(ps_ASV, ps_TAX) %>%
+         merge_phyloseq(., ps_META) %>%
+         merge_phyloseq(., tree) %>%
+         merge_phyloseq(., rep)
+ps
+
+saveRDS(ps, "output/phyloseq_all.rds")
+
+```
+:::
+
+## Subset the rust fungal community
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE}
+ps <- readRDS("output/phyloseq_all.rds")
+
+# Subset rust fungal community only
+ps.rust <- subset_taxa(ps, order == "Pucciniales") %>%
+              # remove ASVs with zero reads
+              prune_taxa(taxa_sums(.) > 0, . ) %>%
+              # remove samples with zero reads
+              prune_samples(sample_sums(.) > 0, .)
+
+ps.rust
+head(tax_table(ps.rust)[tax_table(ps.rust)[, "genus"]=="Puccinia", ])
+
+saveRDS(ps.rust, "output/phyloseq_rust.rds")
+
+```
+:::
+
+## Export representative sequences of rust fungi
+
+::: {.callout-note title="R Block"}
+```{r, eval = TRUE}
+# keep sequences longer than 100 bp
+rep.rust <- refseq(ps.rust) %>%
+  { .[width(.) >= 100] }
+
+# Write Pucciniales representative sequences  
+Biostrings::writeXStringSet(rep.rust, "output/Pucciniales_asv.fasta", 
+                            append=FALSE, width=20001,
+                            compress=FALSE, 
+                            compression_level=NA, 
+                            format="fasta")
+
+```
+:::

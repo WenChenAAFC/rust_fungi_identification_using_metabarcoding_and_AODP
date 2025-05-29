@@ -183,3 +183,47 @@ div.r-help-page:hover {
   margin: 1rem;
 }
 
+/*------------------------------------------------------------
+🏷️ Captions and stylings for figures and tables
+------------------------------------------------------------*/
+/* Figure captions (default class: figcaption) */
+figcaption, .figure-caption {
+  font-size: 1.2rem;  /* Match Cosmo body text size */
+  font-family: "Source Sans Pro", system-ui, sans-serif;
+  font-weight: bold;
+  color: #000;  /* Set to black */
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+/* Table captions */
+.table-caption, caption {
+  font-size: 1.2rem;
+  font-family: "Source Sans Pro", system-ui, sans-serif;;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+/* Frame for figures (images inside <figure>) */
+figure img {
+  border: 1px solid #ccc;  /* Light grey border */
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;  /* Add spacing between stacked figures */
+}
+
+
+/* Add spacing after tables */
+table {
+  margin-bottom: 4rem !important;  /* Adjust spacing as needed */
+  display: block; /* ensure it’s treated as a block element */
+}
+
+/* Add spacing between figures */
+figure {
+  margin-bottom: 4rem !important;
+  display: table; /* may help clarify spacing */
+}

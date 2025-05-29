@@ -4,9 +4,10 @@ project:
   render:
     - index.qmd
     - 0_setup.qmd
-    - 1_data.qmd
-    - 2_aodp.qmd
-    - 3_rust.qmd
+    - 1_intro.qmd
+    - 2_data.qmd
+    - 3_aodp.qmd
+    - 4_rust.qmd
 
 execute:
   # run *all* code chunks from the folder containing your _quarto.yml
@@ -29,14 +30,16 @@ website:
     - text: Workshop Content
       menu:
         - href: index.qmd
-          text: Introduction
+          text: The workshop
         - href: 0_setup.qmd
           text: Environment Setup
-        - href: 1_data.qmd
+        - href: 1_intro.qmd
+          text: Introduction
+        - href: 2_data.qmd
           text: The Dataset
-        - href: 2_aodp.qmd
+        - href: 3_aodp.qmd
           text: AODP for Classification
-        - href: 3_rust.qmd
+        - href: 4_rust.qmd
           text: Validation & Visulization
 
 format:

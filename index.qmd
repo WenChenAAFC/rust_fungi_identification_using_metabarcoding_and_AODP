@@ -1,10 +1,19 @@
 ---
-title: "Introduction"
-format: html
+title: "The workshop"
 bibliography: bibtexlib.bib
+nocite: |
+  @RN5164
+  @RN3722
+  @RN2855
+  @RN286
+  @RN5352
+format:
+  html:
+    citations: true
+    csl: chicago-author-date.csl
 ---
 
-#### 2025-06-5
+#### 2025-06-14
 
 This workshop is prepared for the joint [17th International Cereal Rusts and Powdery Mildews Conference (ICRPMC2025)](https://icrpmc2025.ca/), the [Canadian Phytopathological Society (CPS)](https://phytopath.ca) Annual Meeting, and the [Bourlag Global Rust Initiative (BGRI)](https://bgri.cornell.edu/)Technical Workshop scheduled for June 15-20, 2025 in Vancouver, British Columbia at the at UBC Vancouver campus.
 
@@ -26,17 +35,6 @@ This workshop is prepared for the joint [17th International Cereal Rusts and Pow
 -   [Sean Li](https://profils-profiles.science.gc.ca/en/profile/li-xiang-sean) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca){.email};
 -   [Gurcharn Brar](https://apps.ualberta.ca/directory/person/gurcharn) [gurcharn\@ualberta.ca](mailto:urcharn@ualberta.ca)
 
-## Diagnostic Metagenomics in Plant Pathology
-
-Diagnostic metagenomics refers to the use of untargeted, high-throughput sequencing approaches to identify and characterize all nucleic acids present in a sample, enabling the detection of known, unexpected, and novel pathogens without prior knowledge of their presence. In plant pathology, diagnostic metagenomics has emerged as a powerful tool for comprehensive pathogen detection, disease diagnosis, and surveillance. It allows for the identification of multiple pathogens—fungi, bacteria, viruses, and oomycetes—from complex plant tissues, soil, or environmental samples in a single assay. This approach has been applied in disease outbreak investigations, certification programs, and quarantine enforcement, enabling early detection of regulated or emerging pathogens. Moreover, metagenomic data are increasingly integrated into biovigilance frameworks, which monitor pathogen dynamics across space and time, track potential inoculum sources, and support risk assessment for transboundary pest movement. As sequencing technologies and bioinformatics tools continue to advance, diagnostic metagenomics is poised to become a cornerstone of modern plant health monitoring and biosecurity.
-
-Short-read-based metabarcoding, typically targeting conserved genomic regions such as ITS or 16S rRNA, offers a cost-effective and scalable approach for pathogen detection in diagnostic metagenomics. It enables high-throughput profiling of complex microbial communities and has been instrumental in plant disease diagnostics and environmental monitoring. For example, metabarcoding has been used to detect rust fungi from airborne samples in western Canada, providing valuable insights into pathogen spatial distribution and seasonal dynamics [@RN5164; @RN3722]. However, this approach also has important limitations. Short-read amplicons often lack sufficient resolution to discriminate closely related or cryptic pathogen species, particularly in taxonomically diverse groups like rust fungi. Primer bias and PCR amplification artifacts may skew community profiles, and taxonomic classification is constrained by reference database completeness and accuracy. Despite these challenges, short-read metabarcoding remains a valuable tool in biovigilance systems when combined with rigorous primer design, high-quality reference databases, and complementary molecular approaches.
-
-## Introduction to AODP
-
-The Automated Oligonucleotide Design Pipeline (AODP) [@RN2855] is an open-source software designed to identify "signature oligonucleotides" from a reference sequence dataset . These are defined as subsequences that exclusively and perfectly match a specific group of sequences. The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment [@RN2855]. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions [@RN286; @RN3722]. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below, especially relevant with the f.spp of rusts.
-
-Step-by-step tutorial can also be found in [@RN5352]
 
 ## Special Notification
 
@@ -44,6 +42,7 @@ This workshop offers hands-on training in in silico methods for the identificati
 
 The workshop is designed for participants who are already comfortable using command-line tools and the Linux operating system. It is not intended for beginners seeking introductory Linux training. Participants are expected to bring their own laptops with either a Linux virtual machine (installed via VirtualBox) or access to a Linux-based high-performance computing (HPC) server. Detailed setup instructions will be provided to all registrants in advance, and the required computing environment must be prepared prior to the workshop.
 
-[ YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP. ]{style="color:red; font-weight:bold;"}
+[YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.]{style="color:red; font-weight:bold;"}
 
-## References
+## Recommended reading
+

@@ -1,0 +1,293 @@
+---
+title: "Validation & Visualization"
+format: html
+bibliography: bibtexlib.bib
+---
+
+::: custom-header-title
+Identification of Rust Fungal Species through Metabarcoding and AODP
+:::
+
+## Load R packages quietly
+
+::: {.callout-note title="R Block"}
+```{r, eval=TRUE, message=FALSE, warning=FALSE}
+
+# 1. Load packages quietly ----------------------------------------------------
+library(phyloseq)    # handling phyloseq objects
+library(dplyr)       # data manipulation
+library(tidyr)       # data manipulation
+library(tibble)      # data manipulation
+library(stringr)     # string operations
+library(msa)         # multiple sequence alignment
+library(Biostrings)  # DNAStringSet I/O
+library(phangorn)    # phylogeny inference
+library(ape)         # NJ tree, plotting utilities
+library(ggplot2)     # plotting
+library(ggtree)      # tree plotting
+library(ggmsa)       # alignment inset
+library(treeio)      # rescale_tree()
+
+library(purrr)      # functional programming toolkit
+library(cowplot)    # add-on to ggplot
+
+packageVersion("phyloseq")
+packageVersion("ggmsa")
+
+```
+:::
+
+## Validating AODP classification via phylogenetic tree reconstruction
+
+::: {.callout-note title="R Block"}
+```{r validation, eval=TRUE, message=FALSE, warning=FALSE}
+
+# ──────────────────────────────────────────────────────────────────────────────
+#  Phylogenetic analysis of Puccinia striiformis s.l. (ML tree + alignment)
+# ──────────────────────────────────────────────────────────────────────────────
+
+# 1. Define target species & import phyloseq ---------------------------------
+Pst_sl <- c(
+  "Puccinia_striiformis",
+  "Puccinia_pseudostriiformis",
+  "Puccinia_striiformoides"
+)
+
+ps <- readRDS("output/phyloseq_rust_aodp.rds")
+
+# 2. Extract representative ASV sequences with new labels --------------------
+ps_sub <- subset_taxa(ps, species %in% Pst_sl)
+rep_seqs <- refseq(ps_sub)
+new_ids <- tax_table(ps_sub) %>%
+  as.data.frame(stringsAsFactors=FALSE) %>%
+  rownames_to_column("ASV") %>%
+  mutate(newID = paste(species, "|", ASV, sep="")) %>%
+  pull(newID)
+names(rep_seqs) <- new_ids
+
+# 3. Load reference DB (incl. outgroup) & rename ------------------------------
+ref_db <- readDNAStringSet("refDBs/CR-ITS2-refDB.fasta")
+pattern <- paste(Pst_sl, collapse="|")
+ref_sel <- ref_db[grepl(pattern, names(ref_db)) |
+                    grepl("HM131236", names(ref_db))] 
+ref_ids <- names(ref_sel) %>%
+  strsplit("\\|") %>%
+  map_chr(~ paste(.x[1:2], collapse="|"))
+names(ref_sel) <- ref_ids
+
+# 4. Combine sequences & run MUSCLE -------------------------------------------
+all_seqs   <- c(ref_sel, rep_seqs)
+aln        <- msa(all_seqs, method="Muscle", order="input")
+aln_plain  <- unmasked(aln)              # DNAStringSet
+align_file <- "output/Pst_sl_rep.ref_align.fasta"
+writeXStringSet(aln_plain, align_file)
+
+# 5. Build maximum‐likelihood tree --------------------------------------------
+phydat <- as.phyDat(aln, type="DNA")
+dm     <- dist.ml(phydat)
+nj0    <- NJ(dm)
+fit0   <- pml(nj0, data=phydat) %>%
+  update(k=4, inv=0.2) %>%
+  optim.pml(
+    model        = "GTR",
+    optInv       = TRUE,
+    optGamma     = TRUE,
+    rearrangement= "stochastic",
+    control      = pml.control(trace=0)
+  )
+ml_tree        <- root(
+  fit0$tree,
+  outgroup     = "Puccinia_coronati.brevispora|HM131236",
+  resolve.root = TRUE
+)
+
+# 6. Plot the ML tree --------------------------------------------------------
+p_tree <- ggtree(ml_tree) +
+  geom_tiplab(size=3) +
+  ggtitle("ML (GTR+Γ+I) tree of Pst s.l.") +
+  theme_tree2()
+print(p_tree)
+
+# 7. Add alignment facets -----------------------------------------------------
+msa1 <- tidy_msa(align_file, 170, 220)
+msa2 <- tidy_msa(align_file, 270, 320)
+
+p_align <- ggtree(rescale_tree(ml_tree, "dN"), branch.length=0) +
+  geom_tiplab(size=2.2, offset=0.001) +
+  theme_tree2() +
+  geom_facet(
+    geom    = geom_msa,
+    data    = msa1,
+    panel   = "170–220 bp",
+    font    = "helvetical",
+    color   = "Chemistry_NT"
+  ) +
+  geom_facet(
+    geom    = ggmsa:::geom_logo,
+    data    = msa1,
+    panel   = "170–220 bp",
+    mapping = aes(x=x, logo=char),
+    stat    = "logo",
+    color   = "Chemistry_NT",
+    adaptive= FALSE
+  ) +
+  geom_facet(
+    geom    = geom_msa,
+    data    = msa2,
+    panel   = "270–320 bp",
+    font    = "helvetical",
+    color   = "Chemistry_NT"
+  ) +
+  geom_facet(
+    geom    = ggmsa:::geom_logo,
+    data    = msa2,
+    panel   = "270–320 bp",
+    mapping = aes(x=x, logo=char),
+    stat    = "logo",
+    color   = "Chemistry_NT",
+    adaptive= FALSE
+  ) +
+  xlim_tree(2) +
+  theme(strip.text.x = element_text(size=14, face="bold"))
+
+print(p_align)
+
+# 8. Save the alignment+tree figure ------------------------------------------
+ggsave(
+  filename = "output/Pst_sl_ggtree.ggmsa.pdf",
+  plot     = p_align,
+  width    = 10,
+  height   = 6
+)
+
+```
+:::
+
+## Seasonal dynamics of cereal rust species in BC during 2015-2018
+
+::: {.callout-note title="R Block"}
+```{r seasonal‐dynamics, message=FALSE, warning=FALSE}
+
+# 1. === Define your target rust species & nicer labels ===
+target <- tribble(
+  ~code,                                   ~name,
+  "Puccinia_coronata.VARavenaeFSPavenae",  "Puccinia coronata var. avenae f.sp. avenae",
+  "Puccinia_graminis.CladeII",            "Puccinia graminis CladeII",
+  "Puccinia_graminis.CladeIII",           "Puccinia graminis CladeIII",
+  "Puccinia_striiformis",                 "Puccinia striiformis",
+  "Puccinia_recondita.CladeIV",           "Puccinia recondita CladeIV",
+  "Puccinia_recondita.CladeVI",           "Puccinia recondita CladeVI",
+  "Puccinia_hordei.CladeI",               "Puccinia hordei CladeI"
+)
+
+# 2. === Subset to BC & drop empty taxa/samples ===
+
+ps <- readRDS("output/phyloseq_rust_aodp.rds")
+
+ps_bc <- ps %>%
+  subset_samples(Province=="BC") %>%
+  prune_taxa(taxa_sums(.)>0, .) %>%
+  prune_samples(sample_sums(.)>0, .)
+
+# 3. === Build species‐by‐sample rel‐abundance table ===
+sp_ra <- ps_bc %>%
+  # extract tables
+  otu_table(., taxa_are_rows=TRUE) %>% as.matrix() %>% 
+  as.data.frame() %>% 
+  rownames_to_column("ASV") %>%
+  left_join(
+    as.data.frame(tax_table(ps_bc)) %>% rownames_to_column("ASV") %>% select(ASV, species),
+    by="ASV"
+  ) %>%
+  select(-ASV) %>%
+  group_by(species) %>%
+  summarise(across(everything(), sum), .groups="drop") %>%
+  column_to_rownames("species") %>%
+  t() %>%                                   # now samples × species
+  sweep(1, rowSums(.), "/") %>%             # rel‐abundance
+  as.data.frame() %>%
+  rownames_to_column("SampleID")
+
+# 4. === Pivot longer & join metadata ===
+df_long <- sp_ra %>%
+  pivot_longer(
+    cols = any_of(target$code),
+    names_to  = "SpeciesCode",
+    values_to = "RelAbund"
+  ) %>%
+  left_join(
+    ps_bc %>% sample_data() %>% 
+      as.matrix() %>%
+      as.data.frame() %>% 
+      rownames_to_column("SampleID") %>%
+      select(SampleID, Year, Sample_week, Month, SiteID),
+    by="SampleID"
+  ) %>%
+  mutate(
+    SpeciesName = target$name[match(SpeciesCode, target$code)],
+    SiteID      = factor(SiteID, levels=c("AG","AR","DC"))
+  )
+
+
+# 5. === Compute monthly means & SE (%) ===
+df_monthly <- df_long %>%
+  group_by(SpeciesCode, SpeciesName, Year, SiteID, Month) %>%
+  summarise(
+    Mean   = mean(RelAbund, na.rm=TRUE)*100,
+    SE     = sd(RelAbund, na.rm=TRUE)/sqrt(n())*100,
+    .groups="drop"
+  )
+
+# 6. === Function to make & save one plot ===
+make_plot <- function(code, name, label) {
+  dat <- filter(df_monthly, SpeciesCode==code)
+  p <- ggplot(dat, aes(x=Month, y=Mean, group=Year)) +
+    geom_line() +
+    geom_point() +
+    geom_errorbar(aes(ymin=Mean-SE, ymax=Mean+SE), width=0.2) +
+    facet_grid(SiteID~Year, scales="free_y") +
+    labs(
+      subtitle = paste0(label, ") ", name),
+      x = "Month", y="Mean rel. abundance (%)"
+    ) +
+    theme_minimal(base_size=12) +
+    theme(
+      strip.background = element_rect(fill="grey80", color="black"),
+      axis.text.x = element_text(angle=45, hjust=1),
+      plot.subtitle = element_text(face="bold")
+    )
+  
+  # save
+  ggsave(
+    file.path("output", sprintf("BC_%s_monthly.pdf", code)),
+    plot = p, width=6, height=4
+  )
+  p
+}
+
+# 7. === Loop once to build all plots ===
+# What are the cereal rust species to be plotted?
+present <- levels(factor(df_monthly$SpeciesCode))
+present <- target[target$code %in% present, ]
+print(present)
+
+labels <- toupper(letters[1:nrow(present)])
+plots <- pmap(
+  list(present$code, present$name, labels),
+  make_plot
+) %>% set_names(present$code)
+
+# 8. === Combine a subset as a grid for one figure ===
+grid <- plot_grid(
+  plotlist = plots[present$code], 
+  ncol=3, nrow=3
+)
+
+ggsave("output/BC_all_monthly.pdf", grid, width=16, height=12)
+
+print(plots$Puccinia_coronata.VARavenaeFSPavenae)
+
+print(plots$Puccinia_striiformis)
+
+```
+:::

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction</title>
+<title>The workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -114,22 +114,26 @@ div.csl-indent {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-workshop-content">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Introduction</span></a>
+ <span class="dropdown-text">The workshop</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./0_setup.html">
  <span class="dropdown-text">Environment Setup</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1_data.html">
+    <a class="dropdown-item" href="./1_intro.html">
+ <span class="dropdown-text">Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./2_data.html">
  <span class="dropdown-text">The Dataset</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2_aodp.html">
+    <a class="dropdown-item" href="./3_aodp.html">
  <span class="dropdown-text">AODP for Classification</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3_rust.html">
+    <a class="dropdown-item" href="./4_rust.html">
  <span class="dropdown-text">Validation &amp; Visulization</span></a>
   </li>  
     </ul>
@@ -150,10 +154,8 @@ div.csl-indent {
    
   <ul>
   <li><a href="#workshop-organizing-committee" id="toc-workshop-organizing-committee" class="nav-link active" data-scroll-target="#workshop-organizing-committee">Workshop organizing committee</a></li>
-  <li><a href="#diagnostic-metagenomics-in-plant-pathology" id="toc-diagnostic-metagenomics-in-plant-pathology" class="nav-link" data-scroll-target="#diagnostic-metagenomics-in-plant-pathology">Diagnostic Metagenomics in Plant Pathology</a></li>
-  <li><a href="#introduction-to-aodp" id="toc-introduction-to-aodp" class="nav-link" data-scroll-target="#introduction-to-aodp">Introduction to AODP</a></li>
   <li><a href="#special-notification" id="toc-special-notification" class="nav-link" data-scroll-target="#special-notification">Special Notification</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading">Recommended reading</a></li>
   </ul>
 </nav>
 </nav>
@@ -166,7 +168,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction</h1>
+<h1 class="title">The workshop</h1>
 </div>
 
 
@@ -184,7 +186,7 @@ div.csl-indent {
 
 
 <section id="section" class="level4">
-<h4 class="anchored" data-anchor-id="section">2025-06-5</h4>
+<h4 class="anchored" data-anchor-id="section">2025-06-14</h4>
 <p>This workshop is prepared for the joint <a href="https://icrpmc2025.ca/">17th International Cereal Rusts and Powdery Mildews Conference (ICRPMC2025)</a>, the <a href="https://phytopath.ca">Canadian Phytopathological Society (CPS)</a> Annual Meeting, and the <a href="https://bgri.cornell.edu/">Bourlag Global Rust Initiative (BGRI)</a>Technical Workshop scheduled for June 15-20, 2025 in Vancouver, British Columbia at the at UBC Vancouver campus.</p>
 </section>
 <section id="workshop-organizing-committee" class="level2">
@@ -212,31 +214,25 @@ div.csl-indent {
 </ul>
 </section>
 </section>
-<section id="diagnostic-metagenomics-in-plant-pathology" class="level2">
-<h2 class="anchored" data-anchor-id="diagnostic-metagenomics-in-plant-pathology">Diagnostic Metagenomics in Plant Pathology</h2>
-<p>Working with any plant-associated microbe comes with the inherent challenge that no environment is sterile, and a plant’s metabiome is teeming with life. When collecting field samples outside of the laboratory, the issue is compounded further. In this era of big data and easy access to high throughput sequencing, it is increasingly common for scientists to work with large sequence datasets which must first be evaluated for quality and potential contaminating reads. Sequence data files from environmental samples often contain genetic material from organisms not targeted by the experimental design. Understanding how to identify species from NGS sequencing data, or from targeted sequencing such as ITS spacers while properly accounting for common sources of error and bias is a valuable skill which can be of use to researchers who are beginning a new metagenomic project, or who are mid-way through analysing large and targeted datasets</p>
-<p>This workshop provides hands-on trainings on in silico approaches for identifying and classifying samples from sequencing data, drawing on experience with rust fungus-infected cereal samples collected from fields. However, the concepts we intend to explore in the workshop are broadly applicable so they can be tailored to specific species of interest.</p>
-</section>
-<section id="introduction-to-aodp" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-to-aodp">Introduction to AODP</h2>
-<p>The Automated Oligonucleotide Design Pipeline (AODP) <span class="citation" data-cites="RN3722">(<a href="#ref-RN3722" role="doc-biblioref">Chen, Radford, and Hambleton 2021</a>)</span> is an open-source software designed to identify “signature oligonucleotides” from a reference sequence dataset . These are defined as subsequences that exclusively and perfectly match a specific group of sequences. The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Manuel Zahariev et al. 2018</a>)</span>. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions <span class="citation" data-cites="RN286">(<a href="#ref-RN286" role="doc-biblioref">M. Zahariev et al. 2009</a>)</span>. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below, especially relevant with the f.spp of rusts.</p>
-<p>Step-by-step tutorial can also be found in <span class="citation" data-cites="RN5352">(<a href="#ref-RN5352" role="doc-biblioref">Holden et al. 2025</a>)</span></p>
-</section>
 <section id="special-notification" class="level2">
 <h2 class="anchored" data-anchor-id="special-notification">Special Notification</h2>
-<p>This workshop is intended for participants already familiar with command-line tools and Linux operating systems. It is not suitable for beginners seeking basic Linux training. Participants should bring their own laptops equipped with a Linux virtual machine installed via VirtualBox or with access to a Linux-based HPC server. Instructors will provide detailed instructions to all registrants on setting up the necessary working environment, which must be completed prior to attending the workshop.</p>
+<p>This workshop offers hands-on training in in silico methods for the identification and classification of organisms from sequencing data, with a focus on rust fungus-infected cereal samples collected from the field. While examples will be drawn from cereal rust fungi, the underlying concepts and workflows are broadly applicable and can be adapted to other target species of interest.</p>
+<p>The workshop is designed for participants who are already comfortable using command-line tools and the Linux operating system. It is not intended for beginners seeking introductory Linux training. Participants are expected to bring their own laptops with either a Linux virtual machine (installed via VirtualBox) or access to a Linux-based high-performance computing (HPC) server. Detailed setup instructions will be provided to all registrants in advance, and the required computing environment must be prepared prior to the workshop.</p>
 <p><span style="color:red; font-weight:bold;">YOU MUST COMPLETE THE ENVIRONMENT SETUP BEFORE ATTENDING THE WORKSHOP.</span></p>
 </section>
-<section id="references" class="level2">
+<section id="recommended-reading" class="level2">
 
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Recommended reading</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-RN5164" class="csl-entry" role="listitem">
+Chen, Wen, Nathaniel Newlands, Sarah Hambleton, André Laroche, Seyyed Mohammadreza Davoodi, and Guus Bakkeren. 2024. <span>“Optimizing an Integrated Biovigilance Toolbox to Study the Spatial Distribution and Dynamic Changes of Airborne Mycobiota, with a Focus on Cereal Rust Fungi in Western Canada.”</span> Journal Article. <em>Molecular Ecology Resources</em> n/a (n/a): e13983. https://doi.org/<a href="https://doi.org/10.1111/1755-0998.13983">https://doi.org/10.1111/1755-0998.13983</a>.
+</div>
 <div id="ref-RN3722" class="csl-entry" role="listitem">
-Chen, W, Devon Radford, and Sarah Hambleton. 2021. <span>“Towards Improved Detection and Identification of Rust Fungal Pathogens in Environmental Samples Using a Metabarcoding Approach.”</span> Journal Article. <em>Phytopathology</em> 112 (3): 535–48. https://doi.org/<a href="https://doi.org/10.1094/phyto-01-21-0020-r">https://doi.org/10.1094/phyto-01-21-0020-r</a>.
+Chen, Wen, Devon Radford, and Sarah Hambleton. 2021. <span>“Towards Improved Detection and Identification of Rust Fungal Pathogens in Environmental Samples Using a Metabarcoding Approach.”</span> Journal Article. <em>Phytopathology</em> 112 (3): 535–48. https://doi.org/<a href="https://doi.org/10.1094/phyto-01-21-0020-r">https://doi.org/10.1094/phyto-01-21-0020-r</a>.
 </div>
 <div id="ref-RN5352" class="csl-entry" role="listitem">
 Holden, Samuel, Sang Hu Kim, Wen Chen, Xiang Li, Guus Bakkeren, and Gurcharn Brar. 2025. <span>“Identification of Rust Fungi Using High-Throughput Sequencing Data from Environmental Samples.”</span> Book Section. In <em>Wheat Rusts and Resistance Breeding - Methods and Protocol</em>, edited by Gurcharn Brar and Samuel Holden. <a href="https://link.springer.com/book/9781071643778#overview">https://link.springer.com/book/9781071643778#overview</a>.
@@ -245,7 +241,7 @@ Holden, Samuel, Sang Hu Kim, Wen Chen, Xiang Li, Guus Bakkeren, and Gurcharn Bra
 Zahariev, Manuel, Wen Chen, Cobus M. Visagie, and C. André Lévesque. 2018. <span>“Cluster Oligonucleotide Signatures for Rapid Identification by Sequencing.”</span> Journal Article. <em>BMC Bioinformatics</em> 19 (1): 395. https://doi.org/<a href="https://doi.org/10.1186/s12859-018-2363-3">https://doi.org/10.1186/s12859-018-2363-3</a>.
 </div>
 <div id="ref-RN286" class="csl-entry" role="listitem">
-Zahariev, M, V Dahl, Wen Chen, and CA Levesque. 2009. <span>“Efficient Algorithms for the Discovery of DNA Oligonucleotide Barcodes from Sequence Databases.”</span> Journal Article. <em>Molecular Ecology Resources</em> 9 (s1): 58–64. https://doi.org/<a href="https://doi.org/10.1111/j.1755-0998.2009.02651.x">https://doi.org/10.1111/j.1755-0998.2009.02651.x</a>.
+Zahariev, Manuel, Veronica Dahl, Wen Chen, and C. Andre Levesque. 2009. <span>“Efficient Algorithms for the Discovery of DNA Oligonucleotide Barcodes from Sequence Databases.”</span> Journal Article. <em>Molecular Ecology Resources</em> 9 (s1): 58–64. https://doi.org/<a href="https://doi.org/10.1111/j.1755-0998.2009.02651.x">https://doi.org/10.1111/j.1755-0998.2009.02651.x</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

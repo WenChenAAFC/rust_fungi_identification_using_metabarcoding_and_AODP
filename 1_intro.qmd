@@ -1,0 +1,60 @@
+---
+title: "Introduction"
+format: html
+bibliography: bibtexlib.bib
+---
+
+#### 2025-06-14
+
+## Diagnostic Metagenomics in Plant Pathology
+
+Diagnostic metagenomics (@fig-workflow) refers to the use of untargeted, high-throughput sequencing approaches to identify and characterize all nucleic acids present in a sample, enabling the detection of known, unexpected, and novel pathogens without prior knowledge of their presence. In plant pathology, diagnostic metagenomics has emerged as a powerful tool for comprehensive pathogen (@tbl-pathogens) detection, disease diagnosis, and surveillance. It allows for the identification of multiple pathogens—fungi, bacteria, viruses, and oomycetes—from complex plant tissues, soil, or environmental samples in a single assay. This approach has been applied in disease outbreak investigations, certification programs, and quarantine enforcement, enabling early detection of regulated or emerging pathogens. Moreover, metagenomic data are increasingly integrated into biovigilance frameworks, which monitor pathogen dynamics across space and time, track potential inoculum sources, and support risk assessment for transboundary pest movement. As sequencing technologies and bioinformatics tools continue to advance, diagnostic metagenomics is poised to become a cornerstone of modern plant health monitoring and biosecurity.
+
+
+| Pathogen Type | Estimated Pathogenic spp. | Regulated spp. (CFIA) | Regulated spp. (USDA) |
+|---------------|---------------------------|-----------------------|-----------------------|
+| Fungi         | > 20K                     | > 45                  | 582                   |
+| Oomycetes     | ~ 1K                      | ~ 150                 | 18                    |
+| Bacteria      | 200                       | 13                    | 0.26                  |
+| Nematodes     | 4K                        | 9                     | ?                     |
+| Viruses       | 1K                        | 69                    | 27                    |
+| Other         |                           | ~ 141                 | > 6K                  |
+| **Total**     |                           | > 290                 | > 6919                |
+
+: Estimated Number of Pathogenic Species and Regulated Pathogens by CFIA and USDA {#tbl-pathogens}
+
+![Schematic workflow of diagnostic metagenomics, from the field to wet-lab.](images/Diagnostic_Metagenomics.png){#fig-workflow}
+
+
+## Short-reads-based metabarcoding for pathogen diagnostics
+
+Short-read-based metabarcoding, typically targeting conserved genomic regions such as ITS or 16S rRNA, offers a cost-effective and scalable approach for pathogen detection in diagnostic metagenomics. It enables high-throughput profiling of complex microbial communities and has been instrumental in plant disease diagnostics and environmental monitoring. For example, metabarcoding has been used to detect rust fungi from airborne samples in western Canada, providing valuable insights into pathogen spatial distribution and seasonal dynamics [@RN5164; @RN3722]. However, this approach also has important limitations. Short-read amplicons often lack sufficient resolution to discriminate closely related or cryptic pathogen species, particularly in taxonomically diverse groups like rust fungi. Primer bias and PCR amplification artifacts may skew community profiles, and taxonomic classification is constrained by reference database completeness and accuracy (@fig-metabarcoding). Despite these challenges, short-read metabarcoding remains a valuable tool in biovigilance systems when combined with rigorous primer design, high-quality reference databases, and complementary molecular approaches.
+
+![Advantages and Limitations of Metabarcoding in Pathogen Diagnostics.](images/metabarcoding.png){#fig-metabarcoding}
+
+## Introduction to AODP
+
+The Automated Oligonucleotide Design Pipeline (AODP) [@RN2855] is an open-source software designed to identify "oligonucleotide signatures" from a reference sequence dataset (@fig-algorithm). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (@fig-so). The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment [@RN2855]. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions [@RN286; @RN3722]. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (@fig-tilletia). The source code of AODP is in workshop folder "aodp_v2.0_release".
+
+![Simplified AODP matching algorithm.](images/aodp_algorithm.png){#fig-algorithm}
+
+![Signature oligonucleotides identified by AODP from a reference database.](images/SO_overview.png){#fig-so}
+
+![Distinguishing ITS metabarcodes of *Tilletia indica* (smut fungus, karnal bunt) and *T. walkeri*.](images/Tilletia.png){#fig-tilletia}
+
+## The curated cereal rust fungal ITS2 reference database
+
+The CR-ITS2-refDB [@RN3722] is available in workshop folder "refDBs".
+
+* Generated gradually over 15 years by Dr. S. Hambleton (Ottawa RDC, AAFC)
+* 521 trimmed ITS2 sequences
+* 69 taxa, including 41 Puccinia species or species complexes
+* Clade structure in species complexes reflects ITS-based phylogenies
+* 247 sequences from 7 key rust taxa infecting cereals and grasses
+* Presented in a FASTA format similar to the general FASTA releases of the UNITE ITS databasethe
+* Designed for use with the AODP for high-accuracy pathogen identification
+* Annotated maximum likelihood (ML) tree of CR-ITS2-refDB shown in (@fig-refDB)
+
+![Maximum Likelihood (ML) tree for cereal rust fungal species from air samples. This ML tree compares cereal rust fungal sequences with reference sequences from the CR-ITS2-refDB database. The sequence IDs from CR-ITS2-refDB are in black and formatted as “species name|GenBank accession”, while the sequence IDs of environmental DNA are in red and formatted as “species name assigned by AODP|ASV ID|ASV”. ](images/cereal.rusft.ITS2.annotated.png){#fig-refDB}
+
+## References
