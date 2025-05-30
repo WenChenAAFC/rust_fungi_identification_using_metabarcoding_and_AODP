@@ -59,7 +59,20 @@ The **CR-ITS2-refDB** [@RN3722] is available in workshop folder **refDBs**.
 * Presented in a FASTA format similar to the general FASTA releases of the UNITE ITS databasethe
 * Designed for use with the AODP for high-accuracy pathogen identification
 
-The annotated maximum likelihood (ML) tree of the CR-ITS2-refDB database is shown in @fig-refDB, while the intra- and inter-specific variation distributions are shown in @fig-var.
+@tbl-refDB shows the cereal rust fungal species or species complexes in CR-ITS2-refDB. A fully annotated maximum likelihood (ML) tree of the CR-ITS2-refDB database is shown in @fig-refDB, while the intra- and inter-specific variation distributions are shown in @fig-var.
+
+
+| Species or Species Complex                         | Description        | Common Name  | Primary Crop Host(s)                                 | # Sequences |
+|----------------------------------------------------|--------------------|--------------|------------------------------------------------------|-------------|
+| *Puccinia coronata* var. *avenae* f. sp. *avenae*  | Clade V            | Crown rust   | Oats                                                 | 44          |
+| *Puccinia graminis*                                | Clade II           | Stem rust    | Wheat, Barley, Rye                                   | 32          |
+| *Puccinia graminis*                                | Clade III          | Stem rust    | Oats                                                 | 43          |
+| *Puccinia hordei*                                  | Clade I            | Leaf rust    | Barley, Rye                                          | 16          |
+| *Puccinia recondita*                               | Clade IV           | Leaf rust    | Rye; also Durum wheat in Morocco, Spain, and Portugal| 16          |
+| *Puccinia recondita* (*incl. P. triticina*)        | Clade VI-1 or VI-2 | Leaf rust    | Wheat, Barley                                        | 77          |
+| *Puccinia striiformis*                             | sensu stricto      | Stripe rust  | Wheat                                                | 19          |
+
+: Cereal rust fungal species in CR-ITS2-refDB {#tbl-refDB}
 
 ![Annotated Approximate Maximum Likelihood tree of CR-ITS2-refDB.](images/cereal.rusft.ITS2.annotated.png){#fig-refDB}
 
