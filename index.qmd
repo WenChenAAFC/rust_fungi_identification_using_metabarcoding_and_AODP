@@ -19,7 +19,7 @@ format:
 
 #### 2025-06-15
 
-This workshop is prepared for the joint [17th International Cereal Rusts and Powdery Mildews Conference (ICRPMC2025)](https://icrpmc2025.ca/), the [Canadian Phytopathological Society (CPS)](https://phytopath.ca) Annual Meeting, and the [Bourlag Global Rust Initiative (BGRI)](https://bgri.cornell.edu/)Technical Workshop scheduled for June 15-20, 2025 in Vancouver, British Columbia at the at UBC Vancouver campus.
+This workshop is prepared for the joint [17th International Cereal Rusts and Powdery Mildews Conference (ICRPMC2025)](https://icrpmc2025.ca/), the [Canadian Phytopathological Society (CPS)](https://phytopath.ca) Annual Meeting, and the [Bourlag Global Rust Initiative (BGRI)](https://bgri.cornell.edu/) Technical Workshop scheduled for June 15-20, 2025 in Vancouver, British Columbia at the at UBC Vancouver campus.
 
 ## Workshop organizing committee
 
