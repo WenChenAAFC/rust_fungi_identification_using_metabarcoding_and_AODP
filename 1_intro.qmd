@@ -39,11 +39,11 @@ Short-read-based metabarcoding, typically targeting conserved genomic regions su
 
 ## Introduction to AODP
 
-The Automated Oligonucleotide Design Pipeline (AODP) [@RN2855] is an open-source software designed to identify "oligonucleotide signatures" from a reference sequence dataset (@fig-algorithm). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (@fig-so). The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment [@RN2855]. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions [@RN286; @RN3722]. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (@fig-tilletia). The source code of AODP is in workshop folder **aodp_v2.0_release**.
+The Automated Oligonucleotide Design Pipeline (AODP) [@RN2855] is an open-source software designed to identify "oligonucleotide signatures" (or signatures) from a reference sequence dataset (@fig-algorithm). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (@fig-so). The software then uses signatures to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment [@RN2855]. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions [@RN286; @RN3722]. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (@fig-tilletia). The source code of AODP is in workshop folder **aodp_v2.0_release**.
 
 ![Simplified AODP matching algorithm.](images/aodp_algorithm.png){#fig-algorithm}
 
-![Signature oligonucleotides identified by AODP from a reference database.](images/SO_overview.png){#fig-so}
+![Oligonucleotide signatures identified by AODP from a reference database.](images/SO_overview.png){#fig-so}
 
 ![Distinguishing ITS metabarcodes of *Tilletia indica* (smut fungus, karnal bunt) and *T. walkeri*.](images/Tilletia.png){#fig-tilletia}
 
@@ -53,7 +53,7 @@ The **CR-ITS2-refDB** [@RN3722] is available in workshop folder **refDBs**.
 
 * Generated gradually over 15 years by Dr. S. Hambleton (Ottawa RDC, AAFC)
 * 521 trimmed ITS2 sequences
-* 69 taxa, including 41 Puccinia species or species complexes
+* 69 taxa, including 41 *Puccinia* species or species complexes
 * Clade structure in species complexes reflects ITS-based phylogenies
 * 247 sequences from 7 key rust taxa infecting cereals and grasses
 * Presented in a FASTA format similar to the general FASTA releases of the UNITE ITS databasethe

@@ -323,7 +323,7 @@ Figure&nbsp;3: Advantages and Limitations of Metabarcoding in Pathogen Diagnosti
 </section>
 <section id="introduction-to-aodp" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-aodp">Introduction to AODP</h2>
-<p>The Automated Oligonucleotide Design Pipeline (AODP) <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span> is an open-source software designed to identify “oligonucleotide signatures” from a reference sequence dataset (<a href="#fig-algorithm" class="quarto-xref">Figure&nbsp;4</a>). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (<a href="#fig-so" class="quarto-xref">Figure&nbsp;5</a>). The software then uses signature oligonucleotides to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span>. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions <span class="citation" data-cites="RN286 RN3722">(<a href="#ref-RN286" role="doc-biblioref">Zahariev et al. 2009</a>; <a href="#ref-RN3722" role="doc-biblioref">Chen, Radford, and Hambleton 2021</a>)</span>. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (<a href="#fig-tilletia" class="quarto-xref">Figure&nbsp;6</a>). The source code of AODP is in workshop folder <strong>aodp_v2.0_release</strong>.</p>
+<p>The Automated Oligonucleotide Design Pipeline (AODP) <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span> is an open-source software designed to identify “oligonucleotide signatures” (or signatures) from a reference sequence dataset (<a href="#fig-algorithm" class="quarto-xref">Figure&nbsp;4</a>). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (<a href="#fig-so" class="quarto-xref">Figure&nbsp;5</a>). The software then uses signatures to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span>. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions <span class="citation" data-cites="RN286 RN3722">(<a href="#ref-RN286" role="doc-biblioref">Zahariev et al. 2009</a>; <a href="#ref-RN3722" role="doc-biblioref">Chen, Radford, and Hambleton 2021</a>)</span>. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (<a href="#fig-tilletia" class="quarto-xref">Figure&nbsp;6</a>). The source code of AODP is in workshop folder <strong>aodp_v2.0_release</strong>.</p>
 <div id="fig-algorithm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-algorithm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -340,7 +340,7 @@ Figure&nbsp;4: Simplified AODP matching algorithm.
 <img src="images/SO_overview.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-so-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Signature oligonucleotides identified by AODP from a reference database.
+Figure&nbsp;5: Oligonucleotide signatures identified by AODP from a reference database.
 </figcaption>
 </figure>
 </div>
@@ -361,7 +361,7 @@ Figure&nbsp;6: Distinguishing ITS metabarcodes of <em>Tilletia indica</em> (smut
 <ul>
 <li>Generated gradually over 15 years by Dr.&nbsp;S. Hambleton (Ottawa RDC, AAFC)</li>
 <li>521 trimmed ITS2 sequences</li>
-<li>69 taxa, including 41 Puccinia species or species complexes</li>
+<li>69 taxa, including 41 <em>Puccinia</em> species or species complexes</li>
 <li>Clade structure in species complexes reflects ITS-based phylogenies</li>
 <li>247 sequences from 7 key rust taxa infecting cereals and grasses</li>
 <li>Presented in a FASTA format similar to the general FASTA releases of the UNITE ITS databasethe</li>
