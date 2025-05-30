@@ -17,7 +17,7 @@ format:
     csl: chicago-author-date.csl
 ---
 
-#### 2025-06-14
+#### 2025-06-15
 
 This workshop is prepared for the joint [17th International Cereal Rusts and Powdery Mildews Conference (ICRPMC2025)](https://icrpmc2025.ca/), the [Canadian Phytopathological Society (CPS)](https://phytopath.ca) Annual Meeting, and the [Bourlag Global Rust Initiative (BGRI)](https://bgri.cornell.edu/)Technical Workshop scheduled for June 15-20, 2025 in Vancouver, British Columbia at the at UBC Vancouver campus.
 
@@ -33,7 +33,7 @@ This workshop is prepared for the joint [17th International Cereal Rusts and Pow
 -   [David Kim](https://www.goc411.ca/en/386636/David-Kim) [david.kim2\@agr.gc.ca](mailto:david.kim2@agr.gc.ca)
 -   [Sean Formby](https://scholar.google.ca/citations?user=myuq82AAAAAJ&hl=en) [sean.formby\@gmail.com](mailto:sean.formby@gmail.com); [sean.formby\@gmail.com](mailto:ean.formby@gmail.com)
 
-### Scientific advisors
+#### Scientific advisors
 
 -   [Guus Bakkeren](https://profils-profiles.science.gc.ca/en/profile/guus-bakkeren-phd) [guus.bakkeren\@AGR.GC.CA](mailto:guus.bakkeren@agr.gc.ca);
 -   [Sean Li](https://profils-profiles.science.gc.ca/en/profile/li-xiang-sean) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca){.email};

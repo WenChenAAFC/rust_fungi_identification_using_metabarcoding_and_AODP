@@ -225,7 +225,7 @@ if (!requireNamespace(required_cran, quietly = TRUE)) {
 
 ```
 
-
+------------------------------------------------------------------------
 
 ```{r install-bioc, eval = TRUE}
 
@@ -247,11 +247,11 @@ if (!requireNamespace(required_bioc, quietly = TRUE)) {
 
 ```
 
-
+------------------------------------------------------------------------
 
 ```{r install-dev, eval = TRUE}
 
-# 3. Alternatively, # 3. Install ggmsa from GitHub via devtools
+# 3. Alternatively, install ggmsa from GitHub via devtools
 if (!requireNamespace("devtools", quietly = TRUE)) {
   install.packages("devtools")
 }

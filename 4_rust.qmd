@@ -8,7 +8,6 @@ bibliography: bibtexlib.bib
 Phylogenetic validation and seasonal trends of cereal rust fungi
 :::
 
-
 ## Load R packages quietly
 
 ::: rblock
@@ -54,7 +53,7 @@ Pst_sl <- c(
   "Puccinia_striiformoides"
 )
 
-ps <- readRDS("output/phyloseq_rust_aodp.rds")
+ps <- readRDS("output/phyloseq_all_aodp.RDS")
 
 # 2. Extract representative ASV sequences with new labels --------------------
 ps_sub <- subset_taxa(ps, species %in% Pst_sl)
@@ -65,16 +64,18 @@ new_ids <- tax_table(ps_sub) %>%
   mutate(newID = paste(species, "|", ASV, sep="")) %>%
   pull(newID)
 names(rep_seqs) <- new_ids
+head(names(rep_seqs))
 
 # 3. Load reference DB (incl. outgroup) & rename ------------------------------
 ref_db <- readDNAStringSet("refDBs/CR-ITS2-refDB.fasta")
 pattern <- paste(Pst_sl, collapse="|")
 ref_sel <- ref_db[grepl(pattern, names(ref_db)) |
-                    grepl("HM131236", names(ref_db))] 
+                    grepl("HM131236", names(ref_db))]  # also include "Puccinia_coronati.brevispora|HM131236" as outgroup
 ref_ids <- names(ref_sel) %>%
   strsplit("\\|") %>%
   map_chr(~ paste(.x[1:2], collapse="|"))
 names(ref_sel) <- ref_ids
+head(names(ref_sel))
 
 # 4. Combine sequences & run MUSCLE -------------------------------------------
 all_seqs   <- c(ref_sel, rep_seqs)
@@ -110,7 +111,9 @@ p_tree <- ggtree(ml_tree) +
 print(p_tree)
 
 # 7. Add alignment facets -----------------------------------------------------
+# define the first alignment panel between sites 170-220
 msa1 <- tidy_msa(align_file, 170, 220)
+# define the second alignment panel between sites 170-220
 msa2 <- tidy_msa(align_file, 270, 320)
 
 p_align <- ggtree(rescale_tree(ml_tree, "dN"), branch.length=0) +
@@ -183,7 +186,7 @@ target <- tribble(
 
 # 2. === Subset to BC & drop empty taxa/samples ===
 
-ps <- readRDS("output/phyloseq_rust_aodp.rds")
+ps <- readRDS("output/phyloseq_all_aodp.RDS")
 
 ps_bc <- ps %>%
   subset_samples(Province=="BC") %>%
@@ -197,10 +200,10 @@ sp_ra <- ps_bc %>%
   as.data.frame() %>% 
   rownames_to_column("ASV") %>%
   left_join(
-    as.data.frame(tax_table(ps_bc)) %>% rownames_to_column("ASV") %>% select(ASV, species),
+    as.data.frame(tax_table(ps_bc)) %>% rownames_to_column("ASV") %>% dplyr::select(ASV, species),
     by="ASV"
   ) %>%
-  select(-ASV) %>%
+  dplyr::select(-ASV) %>%
   group_by(species) %>%
   summarise(across(everything(), sum), .groups="drop") %>%
   column_to_rownames("species") %>%
@@ -221,7 +224,7 @@ df_long <- sp_ra %>%
       as.matrix() %>%
       as.data.frame() %>% 
       rownames_to_column("SampleID") %>%
-      select(SampleID, Year, Sample_week, Month, SiteID),
+      dplyr::select(SampleID, Year, Sample_week, Month, SiteID),
     by="SampleID"
   ) %>%
   mutate(
@@ -286,9 +289,13 @@ grid <- plot_grid(
 
 ggsave("output/BC_all_monthly.pdf", grid, width=16, height=12)
 
-print(plots$Puccinia_coronata.VARavenaeFSPavenae)
-
 print(plots$Puccinia_striiformis)
+
+print(plots$Puccinia_graminis.CladeII)
+
+print(plots$Puccinia_graminis.CladeIII)
+
+print(plots$Puccinia_coronata.VARavenaeFSPavenae)
 
 ```
 :::

@@ -58,8 +58,12 @@ The **CR-ITS2-refDB** [@RN3722] is available in workshop folder **refDBs**.
 * 247 sequences from 7 key rust taxa infecting cereals and grasses
 * Presented in a FASTA format similar to the general FASTA releases of the UNITE ITS databasethe
 * Designed for use with the AODP for high-accuracy pathogen identification
-* Annotated maximum likelihood (ML) tree of CR-ITS2-refDB shown in (@fig-refDB)
+
+The annotated maximum likelihood (ML) tree of the CR-ITS2-refDB database is shown in @fig-refDB, while the intra- and inter-specific variation distributions are shown in @fig-var.
 
 ![Annotated Approximate Maximum Likelihood tree of CR-ITS2-refDB.](images/cereal.rusft.ITS2.annotated.png){#fig-refDB}
+
+
+![Intraspecific (left panel) and interspecific (right panel) variation of CR-ITS2-refDB based on the uncorrected pairwise genetic distance matrix of the multisequence alignment.](images/CR-ITS2-refDB-variation.png){#fig-var}
 
 ## References

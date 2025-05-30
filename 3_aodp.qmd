@@ -8,7 +8,6 @@ bibliography: bibtexlib.bib
 Step-by-step instructions for activating your environment, running AODP, and integrating results
 :::
 
-
 ## Activate conda environment
 
 ::: bashblock
@@ -27,8 +26,8 @@ tmux new -s aodp-training
 cd "$wkdir"
 
 # 4. List available environments and activate yours
-conda env list
-conda activate aodp-training
+mamba env list
+mamba activate aodp-training
 
 # 5. Verify installation
 which aodp
@@ -46,22 +45,22 @@ To runAODP, prepare a high-quality refDB in UNITE General Release format, here w
 
 # Single oligo-size run
 time aodp \
-  --threads 8 \
-  --match output/Pucciniales_asv.fasta \
-  --oligo-size 16 \
-  --match-output output/Pucciniales_asv.vs.CRITS2refDB.16.aodp \
-  --max-homolo 0 \
+  --threads=8 \
+  --match=output/Pucciniales_asv.fasta \
+  --oligo-size=16 \
+  --match-output=output/Pucciniales_asv.vs.CRITS2refDB.16.aodp \
+  --max-homolo=0 \
   refDBs/CR-ITS2-refDB.fasta
 
 # Batch run over multiple oligo sizes
 for os in 8 16 24; do
   echo "oligo-size = $os"
   time aodp \
-    --threads 8 \
-    --match output/Pucciniales_asv.fasta \
-    --oligo-size "$os" \
-    --match-output output/Pucciniales_asv.vs.CRITS2refDB."$os".aodp \
-    --max-homolo 0 \
+    --threads=8 \
+    --match=output/Pucciniales_asv.fasta \
+    --oligo-size="$os" \
+    --match-output=output/Pucciniales_asv.vs.CRITS2refDB."$os".aodp \
+    --max-homolo=0 \
     refDBs/CR-ITS2-refDB.fasta
 done
 
@@ -77,7 +76,7 @@ grep Pucciniales Pucciniales_asv.vs.CRITS2refDB.16.aodp \
   | wc -l
 
 # 7. (Optional) Deactivate when done
-conda deactivate
+mamba deactivate
 
 ```
 :::
@@ -101,10 +100,6 @@ library(phyloseq)
 aodp_file <- "output/Pucciniales_asv.vs.CRITS2refDB.16.aodp"
 ranks     <- c("kingdom","phylum","class","order","family","genus","species","strain")
 
-# 3rd quatile interspecific variation: 0.0152, 
-# (1-0.0152)*100 = 98.2
-intraspecific_cutoff    <- 98.2 
-
 aodp <- read.delim(
   aodp_file,
   header = FALSE,
@@ -113,7 +108,14 @@ aodp <- read.delim(
   stringsAsFactors = FALSE
 )
 
+
 # 2) Filter best hits & parse taxonomy -------------------------------------
+
+# Select intraspecific variation cutoff value: 
+# (1-0.0148)*100 = 98.52 # 0.0148 is the 3rd quatile intraspecific variation
+# or this cutoff value can be slightly lower than 98.52
+intraspecific_cutoff <- 98.2 
+
 aodp_filt <- aodp %>%
   filter(tax != "-") %>%                                 # drop no‐hits
   mutate(
@@ -138,7 +140,7 @@ aodp_filt <- aodp %>%
            sep = ";",
            fill = "right",
            remove = FALSE) %>%
-  select(-species1)
+  dplyr::select(-species1)
 
 # 3) Summarize unique values & counts per rank ----------------------------
 unique_tbl <- aodp_filt %>%
@@ -187,6 +189,7 @@ lca_tbl <- unique_tbl %>%
 # 5) Identify ASVs dropped by filtering -----------------------------------
 dropped_asvs <- tibble(ASV = unique(aodp$ASV)) %>%
   anti_join(lca_tbl, by = "ASV")
+length(dropped_asvs$ASV) # 624
 
 # 6) Bundle & save final results ------------------------------------------
 aodp_final <- list(
@@ -215,7 +218,7 @@ library(tibble)
 library(stringr)
 
 # 2) Read in objects -------------------------------------------------------
-ps_orig    <- readRDS("output/phyloseq_rust.rds")
+ps_orig    <- readRDS("output/phyloseq_all.RDS") # the aeromycobiota
 aodp_final <- readRDS("output/aodp_final.RDS")
 
 # 3) Build new taxonomy table ---------------------------------------------
@@ -224,7 +227,7 @@ tax_df <- tax_table(ps_orig) %>%
   rownames_to_column("ASV") %>% 
   left_join(
     aodp_final$assigned %>% 
-      select(ASV, aodp.family, aodp.genus, aodp.species),
+      dplyr::select(ASV, aodp.family, aodp.genus, aodp.species),
     by = "ASV"
   ) %>% 
   mutate(
@@ -239,7 +242,7 @@ tax_df <- tax_table(ps_orig) %>%
       paste0(genus_base, "_sp")
     )
   ) %>% 
-  select(kingdom, phylum, class, order, family, genus, species, ASV) %>% 
+  dplyr::select(kingdom, phylum, class, order, family, genus, species, ASV) %>% 
   column_to_rownames("ASV") %>% 
   as.matrix()
 
@@ -253,7 +256,7 @@ stopifnot(!any(str_detect(tax_table(ps_aodp)[, "species"], "_sp_sp")))
 # peek at first two modified ASVs
 tax_table(ps_aodp)[aodp_final$assigned$ASV[1:2], ]
 
-saveRDS(ps_aodp, "output/phyloseq_rust_aodp.rds")
+saveRDS(ps_aodp, "output/phyloseq_all_aodp.RDS")
 
 ```
 :::
