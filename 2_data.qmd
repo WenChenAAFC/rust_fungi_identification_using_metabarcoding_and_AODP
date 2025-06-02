@@ -62,7 +62,7 @@ tax <- read.table ("qiime2.outputs_and_metadata/taxonomy.tsv", sep = "\t", heade
     fill   = "right",    # pad missing pieces on the right with NA
     remove = TRUE       # remove the original Taxon column 
   ) %>%
-  select(-Confidence) %>%
+  dplyr::select(-Confidence) %>%
   # replace "unidentified to NA
   mutate(across(
     kingdom:species,
@@ -97,7 +97,7 @@ head(tax)
 # load phylogenetic tree
 tree_file <- "qiime2.outputs_and_metadata/tree_rooted.nwk"
 tree <- ape::read.tree(tree_file)
-tree # 15668 tips
+tree # 11656 tips
 
 ```
 
@@ -114,7 +114,7 @@ rep_filtered <- rep[width(rep) >= 100]
 # Check how many are retained
 length(rep_filtered) # 15291
 
-source("./scripts/functions.R")
+source("scripts/functions.R")
 
 color_dna(rep_filtered, n = 5)
 
@@ -164,6 +164,7 @@ rep.rust <- ps %>%
   subset_taxa(order == "Pucciniales") %>% 
   refseq() %>%
   { .[width(.) >= 100] }
+length(rep.rust) # 755
 
 # Write Pucciniales representative sequences  
 Biostrings::writeXStringSet(rep.rust, "output/Pucciniales_asv.fasta", 
