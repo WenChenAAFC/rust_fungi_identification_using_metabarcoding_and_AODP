@@ -195,8 +195,8 @@ div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblo
   <li><a href="#conda-or-mamba-setup" id="toc-conda-or-mamba-setup" class="nav-link" data-scroll-target="#conda-or-mamba-setup">🐍 Conda or Mamba Setup</a></li>
   <li><a href="#git-installation" id="toc-git-installation" class="nav-link" data-scroll-target="#git-installation">🔧 Git Installation</a></li>
   <li><a href="#installing-aodp-with-dependencies-and-other-tools" id="toc-installing-aodp-with-dependencies-and-other-tools" class="nav-link" data-scroll-target="#installing-aodp-with-dependencies-and-other-tools">⚙️ Installing AODP with dependencies and other tools</a></li>
-  <li><a href="#review-other-data-folders-and-accessory-scripts" id="toc-review-other-data-folders-and-accessory-scripts" class="nav-link" data-scroll-target="#review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</a></li>
   <li><a href="#r-and-rstudio-setup" id="toc-r-and-rstudio-setup" class="nav-link" data-scroll-target="#r-and-rstudio-setup">📊 R and RStudio Setup</a></li>
+  <li><a href="#review-other-data-folders-and-accessory-scripts" id="toc-review-other-data-folders-and-accessory-scripts" class="nav-link" data-scroll-target="#review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</a></li>
   </ul>
 </nav>
 </nav>
@@ -240,7 +240,7 @@ div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblo
 <h2 class="anchored" data-anchor-id="conda-or-mamba-setup">🐍 Conda or Mamba Setup</h2>
 <p>We will use <strong>Conda</strong> (or <strong>Mamba</strong>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to manage software environments.</p>
 <ul>
-<li>Recommended: <a href="https://github.com/conda-forge/miniforge#mambaforge" target="_blank">Mambaforge</a></li>
+<li>Recommended: <a href="https://github.com/conda-forge/miniforge#mambaforge" target="_blank">Miniforge</a></li>
 <li>Alternative: <a href="https://docs.conda.io/en/latest/miniconda.html" target="_blank">Miniconda</a></li>
 </ul>
 <section id="test-your-installation" class="level4">
@@ -322,6 +322,9 @@ BASH Block
 </div>
 </div>
 </div>
+<div class="page-break">
+
+</div>
 <hr>
 </section>
 <section id="installing-aodp-with-dependencies-and-other-tools" class="level2">
@@ -377,93 +380,52 @@ BASH Block
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>       <span class="fu">which</span> perl<span class="kw">;</span> </span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>       <span class="fu">perl</span> <span class="at">-MBio::Seq</span> <span class="at">-e</span> <span class="st">'print "Bioperl is working\n";'</span> </span>
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>     <span class="kw">}</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> list perl-bioperl</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Build &amp; install AODP</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> aodp_v2.0_release</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf aodp-2.5.0.1.tar.gz</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> aodp-2.5.0.1</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXXFLAGS</span><span class="op">=</span><span class="st">"-std=c++11"</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="dt">\</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  BIN_TARGET_DIR=<span class="st">"</span><span class="va">$PWD</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  MAN_TARGET_DIR=<span class="st">"</span><span class="va">$PWD</span><span class="st">/man"</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> clean <span class="kw">&amp;&amp;</span> <span class="fu">make</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Temporally add aodp to PATH</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">"</span><span class="va">$PATH</span><span class="st">:</span><span class="va">$PWD</span><span class="st">"</span><span class="kw">;</span> <span class="co"># </span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. to permanently add aodp to PATH,</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="co"># add above line to your ~/.bashrc </span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. add "export PATH="$PATH:/gpfs/fs7/aafc/labs/chenw_lab/workspace/chenw/RustIDing_using_metabarcoding_and_AODP/aodp_v2.0_release/aodp-2.5.0.1"</span></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="co"># source ~/.bashrc</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Test installation</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> aodp</span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="ex">aodp</span> <span class="at">--help</span></span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------</span></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. (Optonal) check other software installed, </span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a><span class="co"># [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> ITSx</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a><span class="ex">ITSx</span> <span class="at">--help</span></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="co"># To deactivate environment</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> list perl-bioperl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="page-break">
+
 </div>
-</div>
-</section>
-<section id="review-other-data-folders-and-accessory-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</h2>
-<div class="callout callout-style-default callout-bashblock callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-BASH Block
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. QIIME2 outputs</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> qiime2.outputs_and_metadata</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The Rust ITS2 Database </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Additional R functions</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>total 24320
-drwxr-xr-x@  8 chenw  staff   256B May 25 19:10 .
-drwxr-xr-x@ 34 chenw  staff   1.1K Jun  2 11:01 ..
--rw-rw-r--@  1 chenw  staff   6.0K May 23 12:23 .DS_Store
--rw-rw-r--@  1 chenw  staff   6.4M Apr  6 03:26 feature-table.tsv
--rw-rw-r--@  1 chenw  staff    24K May 23 10:14 meta.xlsx
--rw-rw-r--@  1 chenw  staff   3.1M Mar 14  2022 rep-seqs_ITS2.fasta
--rw-rw-r--@  1 chenw  staff   1.7M May  2 17:02 taxonomy.tsv
--rw-rw-r--@  1 chenw  staff   675K Apr  6 03:37 tree_rooted.nwk
-total 1304
-drwxr-xr-x@  4 chenw  staff   128B May 22 09:40 .
-drwxr-xr-x@ 34 chenw  staff   1.1K Jun  2 11:01 ..
--rw-rw-r--@  1 chenw  staff   370K May  2 14:18 CR-ITS2-refDB.align.fasta
--rw-rw-r--@  1 chenw  staff   279K May  2 14:17 CR-ITS2-refDB.fasta
-total 24
-drwxr-xr-x@  4 chenw  staff   128B May 23 09:28 .
-drwxr-xr-x@ 34 chenw  staff   1.1K Jun  2 11:01 ..
--rw-r--r--@  1 chenw  staff   6.0K May 23 09:26 .DS_Store
--rw-rw-r--@  1 chenw  staff   1.1K May 23 09:28 functions.R</code></pre>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Build &amp; install AODP</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> aodp_v2.0_release</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xvf aodp-2.5.0.1.tar.gz</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> aodp-2.5.0.1</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CXXFLAGS</span><span class="op">=</span><span class="st">"-std=c++11"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">./configure</span> <span class="dt">\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  BIN_TARGET_DIR=<span class="st">"</span><span class="va">$PWD</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  MAN_TARGET_DIR=<span class="st">"</span><span class="va">$PWD</span><span class="st">/man"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> clean <span class="kw">&amp;&amp;</span> <span class="fu">make</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Temporally add aodp to PATH</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">"</span><span class="va">$PATH</span><span class="st">:</span><span class="va">$PWD</span><span class="st">"</span><span class="kw">;</span> <span class="co"># </span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. to permanently add aodp to PATH,</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># add above line to your ~/.bashrc </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. add "export PATH="$PATH:/gpfs/fs7/aafc/labs/chenw_lab/workspace/chenw/RustIDing_using_metabarcoding_and_AODP/aodp_v2.0_release/aodp-2.5.0.1"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># source ~/.bashrc</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Test installation</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> aodp</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="ex">aodp</span> <span class="at">--help</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. (Optonal) check other software installed, </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#------------------------------</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># [ITSx is an open source software utility to extract the highly variable ITS1 and ITS2 subregions from ITS sequences, which is commonly used as a molecular barcode for e.g. fungi.](https://microbiology.se/software/itsx/)</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> ITSx</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="ex">ITSx</span> <span class="at">--help</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># To deactivate environment</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
+<div class="page-break">
+
 </div>
 </section>
 <section id="r-and-rstudio-setup" class="level2">
@@ -489,48 +451,49 @@ R Block
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CRAN packages</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>required_cran <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"openxlsx"</span>, <span class="co"># Read, write, and edit Microsoft Excel file</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"dplyr"</span>, <span class="co"># data manipulation: filter, select, mutate, summarize, join, etc.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tidyr"</span>, <span class="co"># turning “messy” data into tidy data frames.</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"stringr"</span>, <span class="co"># simple wrappers for string operations (pattern matching, replacement, etc.).</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tibble"</span>,  <span class="co"># Modern reimagining of data.frame: better printing, stricter checks, etc</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"splitstackshape"</span>, <span class="co"># Stack and reshape datasets after splitting concatenated values</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"purrr"</span>, <span class="co"># Functional-programming tools for working with lists/vectors.</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggplot2"</span>, <span class="co"># creating graphics, based on “The Grammar of Graphics.</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cowplot"</span>, <span class="co"># Extensions to ggplot2 for arranging multiple plots and adding annotations.</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ape"</span>, <span class="co"># Analyses of phylogenetics and evolution: tree manipulation, plotting, etc</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"phangorn"</span> <span class="co"># Phylogenetic inference and evolutionary analyses</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_cran, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(required_cran, <span class="at">repos =</span> <span class="st">"http://cran.rstudio.com"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CRAN packages</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>required_cran <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"openxlsx"</span>, <span class="co"># Read, write, and edit Microsoft Excel file</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"dplyr"</span>, <span class="co"># data manipulation: filter, select, mutate, summarize, join, etc.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tidyr"</span>, <span class="co"># turning “messy” data into tidy data frames.</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"stringr"</span>, <span class="co"># simple wrappers for string operations (pattern matching, replacement, etc.).</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"tibble"</span>,  <span class="co"># Modern reimagining of data.frame: better printing, stricter checks, etc</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"splitstackshape"</span>, <span class="co"># Stack and reshape datasets after splitting concatenated values</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"purrr"</span>, <span class="co"># Functional-programming tools for working with lists/vectors.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggplot2"</span>, <span class="co"># creating graphics, based on “The Grammar of Graphics.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"cowplot"</span>, <span class="co"># Extensions to ggplot2 for arranging multiple plots and adding annotations.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ape"</span>, <span class="co"># Analyses of phylogenetics and evolution: tree manipulation, plotting, etc</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"phangorn"</span> <span class="co"># Phylogenetic inference and evolutionary analyses</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_cran, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(required_cran, <span class="at">repos =</span> <span class="st">"http://cran.rstudio.com"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
+<div class="page-break">
+
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Bioconda packages:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, install ggmsa from GitHub via devtools</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>required_bioc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"phyloseq"</span>, <span class="co"># Import, store, analyze and graph microbiome census data (OTUs, taxonomy, phylogeny, sample data).</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"Biostrings"</span>, <span class="co"># Efficient containers and utilities for biological sequences (DNA, RNA, AA strings).</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggtree"</span>, <span class="co"># Grammar-of-graphics plotting and annotation of phylogenetic trees.</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"msa"</span>, <span class="co"># Interface to multiple sequence alignment algorithms (ClustalW/Omega, MUSCLE) in R.</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ggmsa"</span>, <span class="co"># Alignment visualization in a ggplot2-style (sequence and tree insets).</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"treeio"</span> <span class="co"># Import, export, and manipulate richly annotated phylogenetic tree formats (e.g. Newick, Nexus).</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(required_bioc, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(required_bioc)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Alternatively, install ggmsa from GitHub via devtools</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"YuLab-SMU/ggmsa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Using GitHub PAT from the git credential store.</code></pre>
 </div>
@@ -538,67 +501,42 @@ R Block
 <pre><code>Skipping install of 'ggmsa' from a github remote, the SHA1 (b90d4b9f) has not changed since last install.
   Use `force = TRUE` to force installation</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify installation</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggmsa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.13.1'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Check your R session</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>() <span class="co"># This command will tell you information about your current R session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.3 (2025-02-28)
-Platform: x86_64-apple-darwin20
-Running under: macOS Sequoia 15.5
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-time zone: America/Toronto
-tzcode source: internal
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-loaded via a namespace (and not attached):
-  [1] ade4_1.7-23             tidyselect_1.2.1        dplyr_1.1.4            
-  [4] farver_2.1.2            Biostrings_2.74.1       fastmap_1.2.0          
-  [7] phyloseq_1.50.0         promises_1.3.2          digest_0.6.37          
- [10] mime_0.13               lifecycle_1.0.4         cluster_2.1.8.1        
- [13] ellipsis_0.3.2          survival_3.8-3          magrittr_2.0.3         
- [16] compiler_4.4.3          rlang_1.1.6             tools_4.4.3            
- [19] igraph_2.1.4            yaml_2.3.10             data.table_1.17.2      
- [22] knitr_1.50              htmlwidgets_1.6.4       curl_6.2.2             
- [25] pkgbuild_1.4.7          plyr_1.8.9              RColorBrewer_1.1-3     
- [28] pkgload_1.4.0           miniUI_0.1.1.1          purrr_1.0.4            
- [31] BiocGenerics_0.52.0     grid_4.4.3              stats4_4.4.3           
- [34] urlchecker_1.0.1        profvis_0.4.0           multtest_2.62.0        
- [37] biomformat_1.34.0       xtable_1.8-4            colorspace_2.1-1       
- [40] Rhdf5lib_1.28.0         ggplot2_3.5.2           scales_1.4.0           
- [43] iterators_1.0.14        MASS_7.3-65             dichromat_2.0-0.1      
- [46] cli_3.6.5               rmarkdown_2.29.1        vegan_2.6-10           
- [49] crayon_1.5.3            remotes_2.5.0           generics_0.1.4         
- [52] rstudioapi_0.17.1       httr_1.4.7              reshape2_1.4.4         
- [55] sessioninfo_1.2.3       ape_5.8-1               cachem_1.1.0           
- [58] rhdf5_2.50.2            stringr_1.5.1           zlibbioc_1.52.0        
- [61] splines_4.4.3           parallel_4.4.3          BiocManager_1.30.25    
- [64] XVector_0.46.0          vctrs_0.6.5             devtools_2.4.5         
- [67] Matrix_1.7-3            jsonlite_2.0.0          IRanges_2.40.1         
- [70] S4Vectors_0.44.0        foreach_1.5.2           glue_1.8.0             
- [73] codetools_0.2-20        stringi_1.8.7           gtable_0.3.6           
- [76] later_1.4.2             GenomeInfoDb_1.42.3     UCSC.utils_1.2.0       
- [79] tibble_3.2.1            pillar_1.10.2           htmltools_0.5.8.1      
- [82] rhdf5filters_1.18.1     GenomeInfoDbData_1.2.13 R6_2.6.1               
- [85] shiny_1.10.0            evaluate_1.0.3          lattice_0.22-7         
- [88] Biobase_2.66.0          openxlsx_4.2.8          memoise_2.0.1          
- [91] httpuv_1.6.15           Rcpp_1.0.14             zip_2.3.2              
- [94] nlme_3.1-168            permute_0.9-7           mgcv_1.9-3             
- [97] xfun_0.52               usethis_3.1.0           fs_1.6.6               
-[100] pkgconfig_2.0.3        </code></pre>
 </div>
+</div>
+</div>
+<div class="page-break">
+
+</div>
+</section>
+<section id="review-other-data-folders-and-accessory-scripts" class="level2">
+<h2 class="anchored" data-anchor-id="review-other-data-folders-and-accessory-scripts">🧬 Review other data folders and accessory scripts</h2>
+<div class="callout callout-style-default callout-bashblock callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+BASH Block
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. QIIME2 outputs</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> qiime2.outputs_and_metadata</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. The Rust ITS2 Database </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> refDBs </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Additional R functions</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> scripts  </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

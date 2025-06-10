@@ -268,3 +268,94 @@ div.callout-note {
   padding: 1rem;
   border: none;
 }
+
+/* Insert Page Breaks for Printing in Quarto HTML Output */
+@media print {
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+/* Avoid Page Breaks in the Middle of Tables or Figures */
+@media print {
+  .no-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Set Font Size for Print Only */
+@media print {
+  @page {
+    margin: 0.5in !important;
+  }
+
+  body {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  h1, h2, h3 {
+    font-size: 16pt;
+  }
+
+  code, pre {
+    font-size: 10pt;
+  }
+
+  /* Optional: reduce margins, adjust line height */
+  body {
+    line-height: 1.4;
+    margin: 1in;
+  }
+
+  /* Option A: Add a Print-Hidden Class to Header (Requires Layout Control) */  
+  .print-hidden { 
+    display: none !important; 
+  } 
+  
+  /* Disable Header/Footer in Print Dialog */
+  /*.navbar, .navbar-title, .navbar-subtitle { */
+  /*  display: none !important; */
+  /*} */
+  
+  /* Wrap Code Lines in Printed PDF */
+  pre, code {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+  }
+
+  pre {
+    overflow: visible !important;
+  }
+  
+  /* Also Improve Table and Text Wrapping */
+  table {
+    word-wrap: break-word;
+    table-layout: auto;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Make navbar.title Wrap When Printing to PDF */
+  .navbar-brand {
+    white-space: normal !important;
+    word-break: break-word !important;
+    width: 100% !important;
+    line-height: 1.2 !important;
+  }
+
+  .navbar-title,
+  .navbar-subtitle {
+    display: block !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.2;
+  }
+  
+}
+
+
+

@@ -39,6 +39,7 @@ This workshop is prepared for the joint [17th International Cereal Rusts and Pow
 -   [Sean Li](https://profils-profiles.science.gc.ca/en/profile/li-xiang-sean) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca) [sean.li\@inspection.gc.ca](mailto:sean.li@inspection.gc.ca){.email};
 -   [Gurcharn Brar](https://apps.ualberta.ca/directory/person/gurcharn) [gurcharn\@ualberta.ca](mailto:urcharn@ualberta.ca)
 
+<div class="page-break"></div>
 ## Special Notification
 
 This workshop provides hands-on training in bioinformatic approaches for accurate identification and classification of phytopathogens at the species or subspecies level using metabarcoding short reads from environmental samples. While the case study focuses on cereal rust fungi detected in air samples, the concepts and workflows presented are broadly applicable and can be adapted to other pathogens and sample types.
@@ -46,3 +47,4 @@ This workshop provides hands-on training in bioinformatic approaches for accurat
 The workshop is intended for participants with prior experience using command-line tools and the Linux operating system. It is not suitable for those seeking an introduction to Linux. Participants must bring their own laptops equipped with either a Linux virtual machine (e.g., via VirtualBox) or remote access to a Linux-based high-performance computing (HPC) server. Detailed setup instructions are provided in the [**Environment Setup**]{style="background-color:yellow; font-weight:bold;"} section, and [**all required software and environments must be installed before the workshop begins.**]{style="background-color:yellow; font-weight:bold;"}
 
 ## Recommended reading
+

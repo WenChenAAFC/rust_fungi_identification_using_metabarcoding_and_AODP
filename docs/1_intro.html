@@ -178,10 +178,6 @@ div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblo
    
   <ul>
   <li><a href="#diagnostic-metagenomics-in-plant-pathology" id="toc-diagnostic-metagenomics-in-plant-pathology" class="nav-link active" data-scroll-target="#diagnostic-metagenomics-in-plant-pathology">Diagnostic Metagenomics in Plant Pathology</a></li>
-  <li><a href="#short-reads-based-metabarcoding-for-pathogen-diagnostics" id="toc-short-reads-based-metabarcoding-for-pathogen-diagnostics" class="nav-link" data-scroll-target="#short-reads-based-metabarcoding-for-pathogen-diagnostics">Short-reads-based metabarcoding for pathogen diagnostics</a></li>
-  <li><a href="#introduction-to-aodp" id="toc-introduction-to-aodp" class="nav-link" data-scroll-target="#introduction-to-aodp">Introduction to AODP</a></li>
-  <li><a href="#the-curated-cereal-rust-fungal-its2-reference-database" id="toc-the-curated-cereal-rust-fungal-its2-reference-database" class="nav-link" data-scroll-target="#the-curated-cereal-rust-fungal-its2-reference-database">The curated cereal rust fungal ITS2 reference database</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
 </nav>
@@ -217,6 +213,7 @@ div.callout-rblock.callout-style-default .callout-icon::before, div.callout-rblo
 <section id="diagnostic-metagenomics-in-plant-pathology" class="level2">
 <h2 class="anchored" data-anchor-id="diagnostic-metagenomics-in-plant-pathology">Diagnostic Metagenomics in Plant Pathology</h2>
 <p>Diagnostic metagenomics (<a href="#fig-workflow" class="quarto-xref">Figure&nbsp;1</a>) refers to the use of untargeted, high-throughput sequencing approaches to identify and characterize all nucleic acids present in a sample, enabling the detection of known, unexpected, and novel pathogens without prior knowledge of their presence. In plant pathology, diagnostic metagenomics has emerged as a powerful tool for comprehensive pathogen (<a href="#tbl-pathogens" class="quarto-xref">Table&nbsp;1</a>) detection, disease diagnosis, and surveillance. It allows for the identification of multiple pathogens—fungi, bacteria, viruses, and oomycetes—from complex plant tissues, soil, or environmental samples in a single assay. This approach has been applied in disease outbreak investigations, certification programs, and quarantine enforcement, enabling early detection of regulated or emerging pathogens. Moreover, metagenomic data are increasingly integrated into biovigilance frameworks (<a href="#fig-biovigilance" class="quarto-xref">Figure&nbsp;2</a>), which monitor pathogen dynamics across space and time, track potential inoculum sources, and support risk assessment for transboundary pest movement. As sequencing technologies and bioinformatics tools continue to advance, diagnostic metagenomics is poised to become a cornerstone of modern plant health monitoring and biosecurity.</p>
+<div class="no-break">
 <div id="tbl-pathogens" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pathogens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -286,6 +283,8 @@ Table&nbsp;1: Estimated Number of Pathogenic Species and Regulated Pathogens by 
 </div>
 </figure>
 </div>
+</div>
+<div class="no-break">
 <div id="fig-workflow" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -296,6 +295,8 @@ Figure&nbsp;1: Schematic workflow of diagnostic metagenomics, from the field to 
 </figcaption>
 </figure>
 </div>
+</div>
+<div class="no-break">
 <div id="fig-biovigilance" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-biovigilance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -306,10 +307,10 @@ Figure&nbsp;2: AeroNET: A Canadian biovigilance framework integrating spore trap
 </figcaption>
 </figure>
 </div>
-</section>
 <section id="short-reads-based-metabarcoding-for-pathogen-diagnostics" class="level2">
 <h2 class="anchored" data-anchor-id="short-reads-based-metabarcoding-for-pathogen-diagnostics">Short-reads-based metabarcoding for pathogen diagnostics</h2>
 <p>Short-read-based metabarcoding, typically targeting conserved genomic regions such as ITS or 16S rRNA, offers a cost-effective and scalable approach for pathogen detection in diagnostic metagenomics. It enables high-throughput profiling of complex microbial communities and has been instrumental in plant disease diagnostics and environmental monitoring. For example, metabarcoding has been used to detect rust fungi from airborne samples in western Canada, providing valuable insights into pathogen spatial distribution and seasonal dynamics <span class="citation" data-cites="RN5164 RN3722">(<a href="#ref-RN5164" role="doc-biblioref">Chen et al. 2024</a>; <a href="#ref-RN3722" role="doc-biblioref">Chen, Radford, and Hambleton 2021</a>)</span>. However, this approach also has important limitations. Short-read amplicons often lack sufficient resolution to discriminate closely related or cryptic pathogen species, particularly in taxonomically diverse groups like rust fungi. Primer bias and PCR amplification artifacts may skew community profiles, and taxonomic classification is constrained by reference database completeness and accuracy (<a href="#fig-metabarcoding" class="quarto-xref">Figure&nbsp;3</a>). Despite these challenges, short-read metabarcoding remains a valuable tool in biovigilance systems when combined with rigorous primer design, high-quality reference databases, and complementary molecular approaches.</p>
+<div class="no-break">
 <div id="fig-metabarcoding" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-metabarcoding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -320,10 +321,12 @@ Figure&nbsp;3: Advantages and Limitations of Metabarcoding in Pathogen Diagnosti
 </figcaption>
 </figure>
 </div>
+</div>
 </section>
 <section id="introduction-to-aodp" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-aodp">Introduction to AODP</h2>
 <p>The Automated Oligonucleotide Design Pipeline (AODP) <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span> is an open-source software designed to identify “oligonucleotide signatures” (or signatures) from a reference sequence dataset (<a href="#fig-algorithm" class="quarto-xref">Figure&nbsp;4</a>). These are defined as subsequences that exclusively and perfectly match a specific group of sequences (<a href="#fig-so" class="quarto-xref">Figure&nbsp;5</a>). The software then uses signatures to either confirm or rule out matching sequences in a query dataset, followed by performing modified Needleman–Wunsch algorithm for global alignment <span class="citation" data-cites="RN2855">(<a href="#ref-RN2855" role="doc-biblioref">Zahariev et al. 2018</a>)</span>. AODP was specifically developed to enhance pathogen detection accuracy in short metabarcodes by identifying mutations within highly conserved marker regions <span class="citation" data-cites="RN286 RN3722">(<a href="#ref-RN286" role="doc-biblioref">Zahariev et al. 2009</a>; <a href="#ref-RN3722" role="doc-biblioref">Chen, Radford, and Hambleton 2021</a>)</span>. This capability allows for the precise discrimination of short metabarcodes (e.g., ITS sequence) down to the species level or below (<a href="#fig-tilletia" class="quarto-xref">Figure&nbsp;6</a>). The source code of AODP is in workshop folder <strong>aodp_v2.0_release</strong>.</p>
+<div class="no-break">
 <div id="fig-algorithm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-algorithm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -334,6 +337,8 @@ Figure&nbsp;4: Simplified AODP matching algorithm.
 </figcaption>
 </figure>
 </div>
+</div>
+<div class="no-break">
 <div id="fig-so" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-so-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -343,6 +348,7 @@ Figure&nbsp;4: Simplified AODP matching algorithm.
 Figure&nbsp;5: Oligonucleotide signatures identified by AODP from a reference database.
 </figcaption>
 </figure>
+</div>
 </div>
 <div id="fig-tilletia" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -368,6 +374,7 @@ Figure&nbsp;6: Distinguishing ITS metabarcodes of <em>Tilletia indica</em> (smut
 <li>Designed for use with the AODP for high-accuracy pathogen identification</li>
 </ul>
 <p><a href="#tbl-refDB" class="quarto-xref">Table&nbsp;2</a> shows the cereal rust fungal species or species complexes in CR-ITS2-refDB. A fully annotated maximum likelihood (ML) tree of the CR-ITS2-refDB database is shown in <a href="#fig-refDB" class="quarto-xref">Figure&nbsp;7</a>, while the intra- and inter-specific variation distributions are shown in <a href="#fig-var" class="quarto-xref">Figure&nbsp;8</a>.</p>
+<div class="no-break">
 <div id="tbl-refDB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-refDB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -446,6 +453,7 @@ Table&nbsp;2: Cereal rust fungal species in CR-ITS2-refDB
 </div>
 </figure>
 </div>
+</div>
 <div id="fig-refDB" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-refDB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -468,9 +476,11 @@ Figure&nbsp;8: Intraspecific (left panel) and interspecific (right panel) variat
 </div>
 </section>
 <section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 
 
-
+</section>
+</div>
 
 </section>
 

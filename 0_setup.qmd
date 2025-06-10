@@ -23,7 +23,7 @@ We will use **Conda** (or **Mamba**)[^1] to manage software environments.
 
 [^1]: Mamba is a reimplementation of Conda in C++ for speed and faster environment handling.
 
--   Recommended: [Mambaforge](https://github.com/conda-forge/miniforge#mambaforge){target="_blank"}
+-   Recommended: [Miniforge](https://github.com/conda-forge/miniforge#mambaforge){target="_blank"}
 -   Alternative: [Miniconda](https://docs.conda.io/en/latest/miniconda.html){target="_blank"}
 
 #### ✅ Test your installation:
@@ -90,12 +90,13 @@ find . -type d | sed -e 's/[^-][^\/]*\//|   /g' -e 's/| *\([^|]\)/+-- \1/'
 ```
 :::
 
+<div class="page-break"></div>
 ------------------------------------------------------------------------
 
 ## ⚙️ Installing AODP with dependencies and other tools
 
 ::: bashblock
-```{bash install-aodp-in-conda-env, eval=FALSE, results='hide'}
+```{bash install-aodp-in-conda-env-1, eval=FALSE, results='hide'}
 
 # Check your working directory, should be PATH_TO/rust_fungi_identification_using_metabarcoding_and_AODP
 echo $wkdir
@@ -138,6 +139,12 @@ perl -MBio::Seq -e 'print "Bioperl is working\n";' \
      }
 mamba list perl-bioperl
 
+```
+
+<div class="page-break"></div>
+
+```{bash install-aodp-in-conda-env-2, eval=FALSE, results='hide'}
+
 # 6. Build & install AODP
 cd aodp_v2.0_release
 tar xvf aodp-2.5.0.1.tar.gz
@@ -176,24 +183,7 @@ mamba deactivate
 ```
 :::
 
-## 🧬 Review other data folders and accessory scripts
-
-::: bashblock
-```{bash project-folder, eval=TRUE}
-
-# 1. QIIME2 outputs
-ls -lah qiime2.outputs_and_metadata
-
-# 2. The Rust ITS2 Database 
-ls -lah refDBs 
-# find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]
-
-# 3. Additional R functions
-ls -lah scripts  
-# find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
-```
-:::
-
+<div class="page-break"></div>
 ## 📊 R and RStudio Setup
 
 1.  Install R and RStudio
@@ -225,8 +215,7 @@ if (!requireNamespace(required_cran, quietly = TRUE)) {
 
 ```
 
-------------------------------------------------------------------------
-
+<div class="page-break"></div>
 ```{r install-bioc, eval = TRUE}
 
 # 2. Bioconda packages:
@@ -247,8 +236,6 @@ if (!requireNamespace(required_bioc, quietly = TRUE)) {
 
 ```
 
-------------------------------------------------------------------------
-
 ```{r install-dev, eval = TRUE}
 
 # 3. Alternatively, install ggmsa from GitHub via devtools
@@ -260,8 +247,31 @@ devtools::install_github("YuLab-SMU/ggmsa")
 # Verify installation
 packageVersion("ggmsa") 
 
+```
+
+```{r sessionInfo, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, results = 'hide'}
+
 # 4. Check your R session
 sessionInfo() # This command will tell you information about your current R session
 
+```
+:::
+
+<div class="page-break"></div>
+## 🧬 Review other data folders and accessory scripts
+
+::: bashblock
+```{bash project-folder, eval=TRUE, results = 'hide'}
+
+# 1. QIIME2 outputs
+ls -lah qiime2.outputs_and_metadata
+
+# 2. The Rust ITS2 Database 
+ls -lah refDBs 
+# find CR-ITS2-refDB -this is a high-quality, curated ITS2 reference database for cereal rust fungal species or species complexes, compiled by Dr. Sarah Hambleton [@RN3722]
+
+# 3. Additional R functions
+ls -lah scripts  
+# find function.R — this script contain an R function that wraps DNA sequences in HTML spans with nucleotide-specific colors, and then prints them using the htmltools::HTML() function so Quarto renders it with full color in HTML output.
 ```
 :::
