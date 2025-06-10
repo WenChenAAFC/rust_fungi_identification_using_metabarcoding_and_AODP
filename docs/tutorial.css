@@ -355,6 +355,14 @@ div.callout-note {
     line-height: 1.2;
   }
   
+  /* Force background color to print via CSS */
+  .highlighted {
+    background-color: yellow !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
 }
 
 
